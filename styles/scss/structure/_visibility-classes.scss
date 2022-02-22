@@ -1,0 +1,46 @@
+.hide-for-medium {
+	@include breakpoint(mediumUp) {
+		display: none;
+	}
+}
+.show-for-medium {
+	display: none;
+
+	@include breakpoint(mediumOnly) {
+		display: block;
+	}
+}
+.hide-for-medium-only {
+	@include breakpoint(mediumOnly) {
+		display: none;
+	}
+}
+.show-for-medium-only {
+	display: none;
+
+	@include breakpoint(mediumOnly) {
+		display: block;
+	}
+}
+.hide-for-large,
+.hide-for-large-only {
+	@include breakpoint(largeUp) {
+		display: none;
+	}
+}
+.show-for-large,
+.show-for-large-only {
+	display: none;
+
+	@include breakpoint(largeUp) {
+		display: block;
+	}
+}
+.hide-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

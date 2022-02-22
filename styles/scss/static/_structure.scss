@@ -1,0 +1,24 @@
+.container {
+	width: 100%;
+	max-width: rem-calc(1200);
+	margin: 0 auto;
+	padding: rem-calc(0 15);
+
+	@include breakpoint(mediumUp) {
+		padding: rem-calc(0 20);
+	}
+}
+
+$displays: flex, block, inline, grid;
+@each $property in $displays {
+	.d-#{$property} {
+		display: $property;
+	}
+}
+
+.space-between {
+	justify-content: space-between;
+}
+.space-around {
+	justify-content: space-around;
+}

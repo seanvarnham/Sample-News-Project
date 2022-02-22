@@ -1,0 +1,59 @@
+// Horizontal Alignment Classes
+.align-top {
+	align-items: flex-start;
+}
+.align-center {
+	align-items: center;
+}
+.align-bottom {
+	align-items: flex-end;
+}
+
+// Vertical Alignment Classes
+.align-left {
+	justify-content: flex-start;
+}
+.align-middle {
+	justify-content: center;
+}
+.align-right {
+	justify-content: flex-end;
+}
+.align-stretch {
+	align-items: stretch;
+}
+
+// Justification Classes
+.align-justify {
+	justify-content: space-between;
+}
+.align-spaced {
+	justify-content: space-around;
+}
+.align-center-middle {
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+// Item Alignment Classes
+.align-self-top {
+	align-self: flex-start;
+}
+.align-self-center {
+	align-self: center;
+}
+.align-self-bottom {
+	align-self: flex-end;
+}
+.align-self-stretch {
+	align-self: stretch;
+}
+
+// Other Alignments
+$positions: center, right, left;
+@each $position in $positions {
+	.text-align-#{$position} {
+		text-align: $position;
+	}
+}
