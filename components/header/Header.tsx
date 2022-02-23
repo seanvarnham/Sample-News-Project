@@ -15,14 +15,11 @@ const Header = (props: Props) => {
 				className={`p-t-sm p-b-sm`}
 			>
 				<div className="container d-flex">
-					<div className="mob-12 tab-3">
+					<div className="mob-12 tab-9">
 						<Logo />
 					</div>
-					<div className="mob-12 tab-6">
-						<Button color="inherit">Login</Button>
-					</div>
-					<div className="mob-12 tab-3">
-						<Button color="secondary">cart</Button>
+					<div className="mob-12 tab-3 d-flex align-right">
+						<Button color="secondary">Cart</Button>
 					</div>
 				</div>
 			</AppBar>
