@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { cartState } from "../../templates/interfaces";
+import { CartItem, cartState } from "../../templates/interfaces";
 
 // item = [
 //     'id',
@@ -9,7 +9,7 @@ import { cartState } from "../../templates/interfaces";
 // ]
 
 const initialState = {
-	items: [],
+	items: [] as CartItem[],
 	totalValue: 0,
 	totalQuantity: 0,
 } as cartState;
