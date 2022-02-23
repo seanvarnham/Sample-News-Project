@@ -6,6 +6,10 @@ $colours: "egyptian-blue" $egyptian-blue, "dark-goldenrod" $dark-goldenrod,
 		color: $colour;
 	}
 	.has-#{$name}-background-color {
-		color: $colour;
+		background-color: $colour;
+
+		@if ($name == "egyptian-blue") {
+			color: $white;
+		}
 	}
 }

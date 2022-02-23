@@ -1,24 +1,23 @@
-.container {
-	width: 100%;
-	max-width: rem-calc(1200);
-	margin: 0 auto;
-	padding: rem-calc(0 15);
-
-	@include breakpoint(mediumUp) {
-		padding: rem-calc(0 20);
-	}
-}
-
-$displays: flex, block, inline, grid;
+$displays: block, inline, grid;
 @each $property in $displays {
 	.d-#{$property} {
 		display: $property;
 	}
 }
 
-.space-between {
-	justify-content: space-between;
-}
-.space-around {
-	justify-content: space-around;
+$sizes: "sm" 10, "md" 15, "lg" 30;
+@each $name, $size in $sizes {
+	.p-t-#{$name} {
+		padding-top: rem-calc($size);
+	}
+	.p-b-#{$name} {
+		padding-bottom: rem-calc($size);
+	}
+
+	.m-t-#{$name} {
+		margin-top: rem-calc($size);
+	}
+	.m-b-#{$name} {
+		margin-bottom: rem-calc($size);
+	}
 }
