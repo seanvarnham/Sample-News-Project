@@ -4,6 +4,19 @@ export interface Currency {
 	symbol: string;
 }
 
+export interface CartItem {
+	id: number;
+	name: string;
+	value: number;
+	quantity: number;
+}
+
+export interface cartState {
+	items: CartItem[];
+	totalValue: number;
+	totalQuantity: number;
+}
+
 export interface Product {
 	id: number;
 	name: string;
