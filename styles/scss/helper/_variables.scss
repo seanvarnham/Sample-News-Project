@@ -1,30 +1,29 @@
-// COLOUR PALETTE
-$red: #a51212;
-$orange: #d48a11;
-$yellow: #eed70b;
-$green: #17750b;
-$blue: #3150af;
-$indigo: #0e1f53;
-$violet: #5b117e;
-
 // PRIMARY COLOURS
+// https://coolors.co/0a318c-ba8e27-877448-786334-fcdc90
 $egyptian-blue: #0a318c;
 $dark-goldenrod: #ba8e27;
 $gold-fusion: #877448;
 $field-drab: #786334;
 $jasmine: #fcdc90;
 
-// SECONDARY COLOURS
+// ALERTS COLOURS
+$info-1: #90cbfc;
+$info-2: #fccf90;
+$error: #a51212;
+$warning: #fc9090;
+$success: #4caf50;
 
-// TERTIARY COLOURS
+// COLOUR PALETTE
+$red: #a51212;
+$orange: #d48a11;
+$yellow: #eed70b;
+$green: #17750b;
+$blue: $egyptian-blue;
+$indigo: #0e1f53;
+$violet: #5b117e;
+
 $aqua: #09b682;
 $cyan: #0cafa7;
-
-// ALERTS COLOURS
-$info-1: #95f3ff;
-$info-2: #fff895;
-$warning: #ff9595;
-$success: #95ffa7;
 
 // GREYSCALE VALUES
 $black: #1a1a1a;
@@ -35,7 +34,7 @@ $lightest-grey: #e6e6e6;
 $white: #ffffff;
 
 // FONTS
-$primary_font: "Open Sans", sans-serif;
+$openSans: "Open Sans", sans-serif;
 $barlow: "Barlow", sans-serif;
 
 //  LINE HEIGHTS
