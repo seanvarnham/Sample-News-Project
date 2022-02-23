@@ -1,6 +1,6 @@
 import { createTheme } from "@material-ui/core";
 
-const themeProps = {
+const theme = createTheme({
 	breakpoints: {
 		keys: ["xs", "sm", "md", "lg", "xl"],
 		values: {
@@ -115,5 +115,6 @@ const themeProps = {
 			letterSpacing: "0.03333em",
 		},
 	},
-};
-const theme = createTheme(themeProps);
+});
+
+export default theme;
