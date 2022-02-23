@@ -23,7 +23,7 @@ export interface Product {
 	url: string;
 	image: string;
 	price: {
-		price: number;
+		stdPrice: number;
 		salePrice: number;
 	};
 	comingSoon: boolean;
@@ -32,3 +32,8 @@ export interface Product {
 }
 
 export type Products = Product[];
+
+export interface ReducerMap {
+	cart: cartState;
+	products: Product[];
+}
