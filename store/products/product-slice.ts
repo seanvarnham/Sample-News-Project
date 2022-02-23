@@ -3,7 +3,7 @@ import { Products, Product } from "../../templates/interfaces";
 
 const BASE_URL = "http://localhost:3000/api";
 
-const apiSlice = createApi({
+const productsSlice = createApi({
 	reducerPath: "products",
 	baseQuery: fetchBaseQuery({
 		baseUrl: BASE_URL,
@@ -17,5 +17,5 @@ const apiSlice = createApi({
 	},
 });
 
-export const { useFetchProductsQuery } = apiSlice;
-export default apiSlice;
+export const { useFetchProductsQuery } = productsSlice;
+export default productsSlice;
