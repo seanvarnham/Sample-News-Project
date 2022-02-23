@@ -1,13 +1,22 @@
-import "../styles/globals.scss";
-import type { AppProps } from "next/app";
+// Redux Imports
 import { ThemeProvider } from "@material-ui/core";
+import { Provider } from "react-redux";
+import store from "../store/index";
+
+// Next Imports
+import type { AppProps } from "next/app";
+
+// Project Imports
+import "../styles/globals.scss";
 import theme from "../templates/mui/Theme";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
-		<ThemeProvider theme={theme}>
-			<Component {...pageProps} />;
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<Component {...pageProps} />;
+			</ThemeProvider>
+		</Provider>
 	);
 };
 
