@@ -9,12 +9,15 @@ import type { AppProps } from "next/app";
 // Project Imports
 import "../styles/globals.scss";
 import theme from "../templates/mui/Theme";
+import Layout from "../components/layout/Layout";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
-				<Component {...pageProps} />;
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</ThemeProvider>
 		</Provider>
 	);
