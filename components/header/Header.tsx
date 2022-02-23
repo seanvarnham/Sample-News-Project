@@ -2,7 +2,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import { Logo } from "../../lib/icons/Icons";
+import Logo from "../../lib/icons/Logo";
 
 type Props = {};
 
@@ -15,10 +15,13 @@ const Header = (props: Props) => {
 				className={`p-t-sm p-b-sm`}
 			>
 				<div className="container d-flex">
+					<div className="mob-12 tab-3">
+						<Logo />
+					</div>
 					<div className="mob-12 tab-6">
 						<Button color="inherit">Login</Button>
 					</div>
-					<div className="mob-12 tab-6">
+					<div className="mob-12 tab-3">
 						<Button color="secondary">cart</Button>
 					</div>
 				</div>
