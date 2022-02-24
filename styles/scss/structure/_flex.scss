@@ -77,6 +77,16 @@
 .padding-x {
 	padding-left: rem-calc(15);
 	padding-right: rem-calc(15);
+
+	> .cell {
+		padding-right: 0.625rem;
+		padding-left: 0.625rem;
+
+		@include breakpoint(mediumUp) {
+			padding-right: 0.9375rem;
+			padding-left: 0.9375rem;
+		}
+	}
 }
 
 //  Small (size, size-up & offset) Classes
@@ -234,6 +244,7 @@
 	> .tab-auto {
 		@include breakpoint(mediumUp) {
 			width: auto;
+			flex: 1 1 0;
 		}
 	}
 	> .tab-shrink {
@@ -426,6 +437,7 @@
 	> .desk-auto {
 		@include breakpoint(largeUp) {
 			width: auto;
+			flex: 1 1 0;
 		}
 	}
 	> .desk-shrink {
@@ -750,6 +762,7 @@
 	> .tab-auto {
 		@include breakpoint(mediumUp) {
 			width: auto;
+			flex: 1 1 0;
 		}
 	}
 	> .tab-shrink {
@@ -824,6 +837,7 @@
 	> .desk-auto {
 		@include breakpoint(largeUp) {
 			width: auto;
+			flex: 1 1 0;
 		}
 	}
 	> .desk-shrink {
