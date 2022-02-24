@@ -15,11 +15,16 @@ const ProductsListing = (props: Props) => {
 	};
 
 	const productArticles = products?.data?.map((item) => {
-		console.log("item", item);
 		return (
 			<article className="tab-4 desk-3" key={item.id}>
 				<div>
-					<Image layout="fill" width={400} src={item.image} />
+					<Image
+						layout={`intrinsic`}
+						objectFit="cover"
+						height={400}
+						width={400}
+						src={item.image}
+					/>
 				</div>
 				<div>{item.name}</div>
 				<div>{getFormattedPrice(+item.price.stdPrice)}</div>
