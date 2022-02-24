@@ -4,6 +4,11 @@ export interface Currency {
 	symbol: string;
 }
 
+export interface NavItem {
+	name: string;
+	url: string;
+}
+
 export interface CartItem {
 	id: number;
 	name: string;
