@@ -1,6 +1,34 @@
+@import "../../styles/scss/helpers";
+
 .navigation {
 	ul {
 		list-style: none;
 		padding: 0;
+	}
+}
+
+.nav {
+	&__item {
+		line-height: 1;
+		font-size: rem-calc(16);
+
+		@include breakpoint(largeUp) {
+			margin: rem-calc(0 10);
+		}
+
+		a {
+			padding: rem-calc(5 10);
+		}
+
+		&:last-of-type {
+			a {
+				padding-right: 0;
+			}
+		}
+
+		[aria-current] {
+			color: $egyptian-blue;
+			font-weight: bolder;
+		}
 	}
 }

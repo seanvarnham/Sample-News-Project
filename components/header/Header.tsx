@@ -21,28 +21,33 @@ const Header = (props: Props) => {
 			<AppBar
 				color="transparent"
 				position="relative"
+				variant="outlined"
 				className={`p-t-sm p-b-sm`}
 			>
-				<div className="container d-flex padding-x">
-					<div className="cell mob-12 tab-3">
-						<Link href="/">
-							<span
-								style={{
-									fontFamily: "Time New Roman, Serif",
-									fontSize: "2rem",
-									fontWeight: "bold",
-								}}
-							>
-								No. 10 Party Shop
-							</span>
-							{/* <Logo /> */}
-						</Link>
-					</div>
-					<div className="cell mob-12 tab-auto">
-						<Navigation label="Main navigation" />
-					</div>
-					<div className="cell mob-12 tab-shrink d-flex align-right">
-						{cart && <CartButton cartState={cart} />}
+				<div className="container">
+					<div className="d-flex margin-x">
+						<div className="cell mob-12 tab-3">
+							<Link href="/" passHref>
+								<a>
+									<span
+										style={{
+											fontFamily: "Time New Roman, Serif",
+											fontSize: "2rem",
+											fontWeight: "bold",
+										}}
+									>
+										No. 10 Party Shop
+									</span>
+									{/* <Logo /> */}
+								</a>
+							</Link>
+						</div>
+						<div className="cell mob-12 tab-auto">
+							<Navigation label="Main navigation" />
+						</div>
+						<div className="cell mob-12 tab-shrink d-flex align-right">
+							{cart && <CartButton cartState={cart} />}
+						</div>
 					</div>
 				</div>
 			</AppBar>

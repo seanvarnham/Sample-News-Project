@@ -1,8 +1,13 @@
+// Externals
+import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+// Internals
 import nav from "../../lib/data/nav-menu.json";
 import { NavItem } from "../../templates/interfaces";
 
+// Styles
 import classes from "./Navigation.module.scss";
 
 type Props = {
@@ -15,16 +20,32 @@ const Navigation = (props: Props) => {
 
 	const current = router.route;
 
+	const navItemClasses = (url: string) =>
+		classNames(classes.nav__item, {
+			["nav__item--current"]: current === url,
+		});
+
 	return (
 		<nav aria-label={label} className={classes.navigation}>
-			<ul className="d-flex align-right">
+			<ul className="d-flex align-right padding-x">
 				{(nav as NavItem[]) &&
 					nav.map((navItem: NavItem) => {
 						console.log("navItem", navItem);
 						return (
-							<li key={navItem.name}>
+							<li
+								key={navItem.name}
+								className={navItemClasses(navItem.url)}
+							>
 								<Link passHref={true} href={navItem.url}>
-									<a>{navItem.name}</a>
+									<a
+										aria-current={
+											current === navItem.url
+												? true
+												: undefined
+										}
+									>
+										{navItem.name}
+									</a>
 								</Link>
 							</li>
 						);
