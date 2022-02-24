@@ -1,4 +1,6 @@
+import { Typography } from "@material-ui/core";
 import Image from "next/image";
+import ProductArticle from "../../components/layout/articles/products/ProductArticle";
 import { useFetchProductsQuery } from "../../store/products/product-slice";
 
 type Props = {};
@@ -8,28 +10,8 @@ const ProductsListing = (props: Props) => {
 	const { isError, isFetching, isSuccess, isLoading, data } = products;
 	console.log("products", products);
 
-	const getFormattedPrice = (price: number) => {
-		const newPrice = price.toFixed(2);
-
-		return `£${newPrice}`;
-	};
-
-	const productArticles = products?.data?.map((item) => {
-		return (
-			<article className="tab-4 desk-3" key={item.id}>
-				<div>
-					<Image
-						layout={`intrinsic`}
-						objectFit="cover"
-						height={400}
-						width={400}
-						src={item.image}
-					/>
-				</div>
-				<div>{item.name}</div>
-				<div>{getFormattedPrice(+item.price.stdPrice)}</div>
-			</article>
-		);
+	const productArticles = products.data?.map((item) => {
+		return <ProductArticle key={item.id} article={item} />;
 	});
 
 	return (
@@ -42,7 +24,7 @@ const ProductsListing = (props: Props) => {
 			)}
 			{isSuccess && (
 				<>
-					<div className="d-flex">
+					<div className="d-flex margin-x">
 						{products?.data && data?.length && (
 							<>{productArticles}</>
 						)}
