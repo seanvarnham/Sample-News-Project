@@ -92,8 +92,8 @@ const ProductsList = [
 	},
 	{
 		id: 100008,
-		name: "Toilet Roll",
-		url: "/toilet-roll",
+		name: "Face Masks",
+		url: "/face-masks",
 		image: "https://images.pexels.com/photos/3951628/pexels-photo-3951628.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
 		price: {
 			stdPrice: 2,
