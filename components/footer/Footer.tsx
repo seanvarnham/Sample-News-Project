@@ -1,14 +1,23 @@
+// Externals
+import { Paper } from "@material-ui/core";
 import Link from "next/link";
+
+// Internals
+import classes from "./Footer.module.scss";
 
 type Props = {};
 
 const Footer = (props: Props) => {
 	return (
-		<footer className={`has-jasmine-background-color`}>
+		<Paper
+			elevation={2}
+			component="footer"
+			className={`d-flex align-center ${classes.footer}`}
+		>
 			<div className={`container`}>
-				<Link href={`https://vercel.com`}>Powered by</Link>
+				<span>Powered by BoJo</span>
 			</div>
-		</footer>
+		</Paper>
 	);
 };
 
