@@ -30,7 +30,6 @@ const Navigation = (props: Props) => {
 			<ul className="d-flex align-right padding-x">
 				{(nav as NavItem[]) &&
 					nav.map((navItem: NavItem) => {
-						console.log("navItem", navItem);
 						return (
 							<li
 								key={navItem.name}

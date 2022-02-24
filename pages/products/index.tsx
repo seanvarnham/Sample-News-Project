@@ -40,7 +40,7 @@ export default ProductsListing;
 export const getServerSideProps = async (context: any) => {
 	const response = fetch("http://localhost:3000/api/products");
 	const data = (await response).json();
-	console.log("data", data);
+
 	return {
 		props: {}, // will be passed to the page component as props
 	};
