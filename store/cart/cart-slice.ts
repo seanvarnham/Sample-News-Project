@@ -18,16 +18,33 @@ export const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		replaceCart(state, action) {
-			console.log("replaceCart state", state);
-			state.totalQuantity = action.payload.totalQuantity;
-			state.items = action.payload.items;
+		clearCart(state, action) {
+			state = initialState;
 		},
 		addToCart(state, action) {
-			console.log("addToCart state", state);
 			const newItem = action.payload;
-			const existingItem = action.payload.totalQuantity;
-			state.totalQuantity++;
+			const existingItem = state.items.find(
+				(item) => item.id === newItem.id
+			);
+
+			if (!existingItem) {
+				state.items.push(newItem);
+			} else {
+				console.log("existingItem", existingItem);
+				existingItem.quantity =
+					existingItem.quantity + newItem.quantity;
+				existingItem.value = existingItem.value + newItem.value;
+			}
+
+			const totalValue = state.items.map((prod: CartItem) => prod.value);
+			const totalQuantity = state.items.map(
+				(prod: CartItem) => prod.quantity
+			);
+
+			state.totalValue = totalValue.reduce((prev, curr) => prev + curr);
+			state.totalQuantity = totalQuantity.reduce(
+				(prev, curr) => prev + curr
+			);
 		},
 		removeFromCart(state, action) {
 			console.log("removeFromCart state", state);
