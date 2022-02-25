@@ -11,7 +11,7 @@ type Props = {
 
 const CartButton = (props: Props) => {
 	const cart = useSelector((state: ReducerMap) => state.cart);
-	// console.log("cart", cart);
+	console.log("cart", cart);
 
 	return (
 		<Button variant="outlined" color="primary">
