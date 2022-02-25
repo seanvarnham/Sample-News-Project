@@ -1,9 +1,3 @@
-export interface Currency {
-	name: string;
-	code: string;
-	symbol: string;
-}
-
 export interface NavItem {
 	name: string;
 	url: string;
