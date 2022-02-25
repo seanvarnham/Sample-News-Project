@@ -1,6 +1,8 @@
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
+import classes from "./Layout.module.scss";
+
 type Props = {
 	children?: any;
 };
@@ -8,7 +10,7 @@ type Props = {
 const Layout = (props: Props) => {
 	return (
 		<>
-			<div className={`wrapper`}>
+			<div className={classes.wrapper}>
 				<Header />
 
 				{props.children}
