@@ -48,7 +48,7 @@ const Header = (props: Props) => {
 						</div>
 
 						<div className="cell mob-12 tab-shrink show-for-tablet d-flex align-right">
-							{cart && <CartButton cartState={cart} />}
+							{cart && <CartButton />}
 						</div>
 					</div>
 				</div>

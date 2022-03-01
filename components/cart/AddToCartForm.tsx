@@ -1,5 +1,8 @@
-import { Button, Input } from "@material-ui/core";
-import { FormEvent, forwardRef } from "react";
+import { FormEvent, forwardRef, Ref } from "react";
+
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
+
 import { Product } from "../../templates/interfaces";
 
 type Props = {
@@ -7,9 +10,8 @@ type Props = {
 	item: Product;
 };
 
-const AddToCartForm = forwardRef<HTMLInputElement>((props: Props, ref) => {
+const AddForm = (props: Props, ref: Ref<HTMLInputElement>) => {
 	const { onAddToCart, item } = props;
-	// console.log("ref", ref);
 
 	return (
 		<form onSubmit={onAddToCart} className="d-flex margin-x">
@@ -28,6 +30,7 @@ const AddToCartForm = forwardRef<HTMLInputElement>((props: Props, ref) => {
 			</div>
 		</form>
 	);
-});
+};
+const AddToCartForm = forwardRef(AddForm);
 
 export default AddToCartForm;

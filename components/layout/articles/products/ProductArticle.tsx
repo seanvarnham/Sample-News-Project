@@ -118,8 +118,12 @@ const ProductArticle = (props: Props) => {
 					<ProductPrice {...item} />
 				</div>
 				<div className={`align-self-bottom ${classes.product__footer}`}>
-					<AddToCartForm onAddToCart={onAddToCart} ref={inputRef} />
-
+					<AddToCartForm
+						onAddToCart={onAddToCart}
+						ref={inputRef}
+						item={item}
+					/>
+					{/* 
 					<form onSubmit={onAddToCart} className="d-flex margin-x">
 						<div className="cell mob-3">
 							<Input
@@ -138,7 +142,7 @@ const ProductArticle = (props: Props) => {
 								Add to cart
 							</Button>
 						</div>
-					</form>
+					</form> */}
 				</div>
 			</article>
 		</>

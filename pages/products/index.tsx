@@ -10,7 +10,7 @@ type Props = {
 	newProducts: Products;
 };
 
-const ProductsListing = (props: Props) => {
+const Products = (props: Props) => {
 	const { newProducts } = props;
 	const [filters, setFilters] = useState<string[]>([]);
 	const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
@@ -38,11 +38,11 @@ const ProductsListing = (props: Props) => {
 	};
 
 	useEffect(() => {
-		if (isSuccess) {
-			setDisplayProducts(products?.data);
+		if (isSuccess && data) {
+			setDisplayProducts(data);
 			setProductsReady(true);
 		}
-	}, [data]);
+	}, [isSuccess, data]);
 
 	useEffect(() => {
 		if (!productsReady) {
@@ -59,10 +59,7 @@ const ProductsListing = (props: Props) => {
 			const newData: Product[] = data || [];
 			setDisplayProducts(newData);
 		}
-	}, [filters, data]);
-
-	console.log("newProducts", newProducts);
-	console.log("displayProducts", displayProducts);
+	}, [productsReady, filters, data]);
 
 	return (
 		<div className="container">
@@ -107,4 +104,4 @@ const ProductsListing = (props: Props) => {
 	);
 };
 
-export default ProductsListing;
+export default Products;
