@@ -10,12 +10,9 @@ import { Product, Products } from "../../templates/interfaces";
 
 import ProductFilters from "../../components/Products/ProductFilters";
 
-type Props = {
-	newProducts: Products;
-};
+type Props = {};
 
 const Products = (props: Props) => {
-	const { newProducts } = props;
 	const [filters, setFilters] = useState<string[]>([]);
 	const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
 	const [productsReady, setProductsReady] = useState<boolean>(false);
