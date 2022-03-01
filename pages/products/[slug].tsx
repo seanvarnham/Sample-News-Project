@@ -72,7 +72,9 @@ const SingleProduct = (props: Props) => {
 export default SingleProduct;
 
 export const getStaticPaths = async () => {
-	const response = await fetch(`${process.env.LOCAL_URL}/api/products`);
+	const location = process.env.LOCAL_URL || "http://localhost:3000";
+
+	const response = await fetch(`${location}/api/products`);
 	const data = await response.json();
 
 	return {
@@ -86,9 +88,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: any) => {
-	console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+	const location = process.env.LOCAL_URL || "http://localhost:3000";
+
 	const itemSlug = context?.params.slug;
-	const response = await fetch(`${process.env.LOCAL_URL}/api/products`);
+	const response = await fetch(`${location}/api/products`);
 	const data = await response.json();
 
 	return {
