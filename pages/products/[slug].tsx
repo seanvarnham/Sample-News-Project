@@ -86,6 +86,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: any) => {
+	console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 	const itemSlug = context?.params.slug;
 	const response = await fetch(`${process.env.LOCAL_URL}/api/products`);
 	const data = await response.json();
