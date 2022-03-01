@@ -1,17 +1,17 @@
 import { MouseEvent } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
-import { ReducerMap } from "../../templates/interfaces";
+// import { ReducerMap } from "../../templates/interfaces";
 
-import classes from "../header/header.module.scss";
+// import classes from "../Header/header.module.scss";
 
 type Props = {};
 
 const AddToCart = (props: Props) => {
-	const cart = useSelector((state: ReducerMap) => state.cart);
+	// const cart = useSelector((state: ReducerMap) => state.cart);
 
 	const onClickCartButton = (e: MouseEvent) => {
 		e.preventDefault();
