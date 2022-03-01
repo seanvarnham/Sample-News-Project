@@ -1,10 +1,6 @@
 @import "../../styles/scss/helpers";
 
 .navigation {
-	ul {
-		list-style: none;
-		padding: 0;
-	}
 }
 
 .nav {
@@ -27,7 +23,7 @@
 		}
 
 		[aria-current] {
-			color: $egyptian-blue;
+			color: $dark-goldenrod;
 			font-weight: bolder;
 		}
 	}

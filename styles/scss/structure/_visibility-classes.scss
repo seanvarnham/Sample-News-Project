@@ -1,35 +1,35 @@
-.hide-for-medium {
+.hide-for-tablet {
 	@include breakpoint(mediumUp) {
 		display: none;
 	}
 }
-.show-for-medium {
+.show-for-tablet {
 	display: none;
 
-	@include breakpoint(mediumOnly) {
+	@include breakpoint(mediumUp) {
 		display: block;
 	}
 }
-.hide-for-medium-only {
+.hide-for-tablet-only {
 	@include breakpoint(mediumOnly) {
 		display: none;
 	}
 }
-.show-for-medium-only {
+.show-for-tablet-only {
 	display: none;
 
 	@include breakpoint(mediumOnly) {
 		display: block;
 	}
 }
-.hide-for-large,
-.hide-for-large-only {
+.hide-for-desktop,
+.hide-for-desktop-only {
 	@include breakpoint(largeUp) {
 		display: none;
 	}
 }
-.show-for-large,
-.show-for-large-only {
+.show-for-desktop,
+.show-for-desktop-only {
 	display: none;
 
 	@include breakpoint(largeUp) {

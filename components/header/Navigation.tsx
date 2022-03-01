@@ -26,8 +26,8 @@ const Navigation = (props: Props) => {
 		});
 
 	return (
-		<nav aria-label={label} className={classes.navigation}>
-			<ul className="d-flex align-right padding-x">
+		<nav aria-label={label} className={`${classes.navigation}`}>
+			<ul className="d-flex align-right padding-x no-bullet">
 				{(nav as NavItem[]) &&
 					nav.map((navItem: NavItem) => {
 						return (

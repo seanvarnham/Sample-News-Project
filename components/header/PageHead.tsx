@@ -2,7 +2,7 @@ import Head from "next/head";
 
 type Props = {
 	title: string | undefined;
-	description: string | undefined;
+	description?: string | undefined;
 };
 
 const PageHead = (props: Props) => {
@@ -10,10 +10,12 @@ const PageHead = (props: Props) => {
 	return (
 		<Head>
 			<title>{title || "Sample App"}</title>
-			<meta
-				name="description"
-				content={description || "by Sean Varnham"}
-			/>
+			{description && (
+				<meta
+					name="description"
+					content={description || "by Sean Varnham"}
+				/>
+			)}
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 	);

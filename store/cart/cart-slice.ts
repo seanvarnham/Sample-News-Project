@@ -30,7 +30,7 @@ export const cartSlice = createSlice({
 			if (!existingItem) {
 				state.items.push(newItem);
 			} else {
-				console.log("existingItem", existingItem);
+				// console.log("existingItem", existingItem);
 				existingItem.quantity =
 					existingItem.quantity + newItem.quantity;
 				existingItem.value = existingItem.value + newItem.value;
@@ -47,7 +47,7 @@ export const cartSlice = createSlice({
 			);
 		},
 		removeFromCart(state, action) {
-			console.log("removeFromCart state", state);
+			// console.log("removeFromCart state", state);
 			const id = action.payload;
 			const existingItem = state.items.find((item) => item.id === id);
 			state.totalQuantity--;

@@ -1,32 +1,38 @@
 //
+import Image from "next/image";
 import { ElementType } from "react";
 
 //
 import { PictureTag } from "../../templates/interfaces/image-interfaces";
-import CustomTag from "../layout/CustomTag";
+import CustomTag from "../Layout/CustomTag";
 
 //
-import classes from "./Jumbotron.module.scss";
+import compClasses from "./Jumbotron.module.scss";
 
 type Props = {
 	children?: any;
+	classes: string;
 	tagName: ElementType;
 	source: PictureTag;
 };
 
 const Jumbotron = (props: Props) => {
 	const {
+		classes,
 		tagName,
 		source: { mob, tab, desk },
 	} = props;
-	console.log("Jumbotron props", props);
+	// console.log("Jumbotron props", props);
 
 	if (!desk) {
 		throw new Error("Missing desktop image data");
 	}
 
 	return (
-		<CustomTag as={tagName} className={classes.jumbotron}>
+		<CustomTag
+			as={tagName}
+			className={`${compClasses.jumbotron} ${classes}`}
+		>
 			<picture>
 				{mob?.srcSet && (
 					<source

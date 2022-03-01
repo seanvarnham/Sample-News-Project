@@ -1,7 +1,11 @@
-import { Button } from "@material-ui/core";
-import Image from "next/image";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+
+import Link from "next/link";
+
 import Jumbotron from "../components/Jumbotron/Jumbotron";
-import PageHead from "../components/header/PageHead";
+import PageHead from "../components/Header/PageHead";
+import { Product } from "../templates/interfaces";
 
 const Home = () => {
 	const pictures = {
@@ -23,15 +27,23 @@ const Home = () => {
 	};
 	return (
 		<>
-			<PageHead title={"No. 10 Lockdown Party Store"} description={``} />
+			<PageHead title={"No. 10 Lockdown Party Store"} />
 
-			<main className={``}>
+			<main className="main">
 				<article>
-					<Jumbotron tagName={`header`} source={pictures}>
-						<h1 className="">Welcome to the No. 10 Party Shop</h1>
-						<Button variant="contained" color="secondary">
-							Let's get wasted!
-						</Button>
+					<Jumbotron
+						tagName={`header`}
+						source={pictures}
+						classes={`d-flex align-center-middle text-align-center`}
+					>
+						<Typography variant="h2" variantMapping={{ h2: "h1" }}>
+							Welcome to the No. 10 Party Shop
+						</Typography>
+						<Link passHref href={`/products`}>
+							<Button variant="contained" color="secondary">
+								{`Let's get wasted!`}
+							</Button>
+						</Link>
 					</Jumbotron>
 				</article>
 			</main>

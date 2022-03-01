@@ -1,47 +1,110 @@
+import { FormEvent, useEffect, useState } from "react";
 import { Typography } from "@material-ui/core";
-import Image from "next/image";
-import ProductArticle from "../../components/layout/articles/products/ProductArticle";
+import ProductArticle from "../../components/Layout/articles/products/ProductArticle";
 import { useFetchProductsQuery } from "../../store/products/product-slice";
+// import categories from "../../lib/data/categories.json";
+import { Product, Products } from "../../templates/interfaces";
+import ProductFilters from "../../components/Products/ProductFilters";
 
-type Props = {};
+type Props = {
+	newProducts: Products;
+};
 
 const ProductsListing = (props: Props) => {
-	const products = useFetchProductsQuery();
-	const { isError, isFetching, isSuccess, isLoading, data } = products;
-	console.log("products", products);
+	const { newProducts } = props;
+	const [filters, setFilters] = useState<string[]>([]);
+	const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
+	const [productsReady, setProductsReady] = useState<boolean>(false);
 
-	const productArticles = products.data?.map((item) => {
-		return <ProductArticle key={item.id} article={item} />;
-	});
+	// Get Products via redux
+	const products = useFetchProductsQuery();
+	const { isError, isSuccess, isLoading, data } = products;
+
+	const onChangeFilters = (e: FormEvent<HTMLInputElement>, cat: string) => {
+		let prevFilters = filters.slice();
+		let newFilters: string[] = [];
+
+		if (filters.length > 0) {
+			if (prevFilters.includes(cat)) {
+				newFilters = prevFilters.filter((filter) => filter !== cat);
+			} else {
+				newFilters = [cat, ...prevFilters];
+			}
+		} else {
+			newFilters.push(cat);
+		}
+
+		setFilters(newFilters);
+	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			setDisplayProducts(products?.data);
+			setProductsReady(true);
+		}
+	}, [data]);
+
+	useEffect(() => {
+		if (!productsReady) {
+			return;
+		}
+
+		const filteredProducts = data?.filter((item) => {
+			return item.categories.some((cat) => filters.includes(cat));
+		});
+
+		if (filteredProducts?.length) {
+			setDisplayProducts(filteredProducts);
+		} else {
+			const newData: Product[] = data || [];
+			setDisplayProducts(newData);
+		}
+	}, [filters, data]);
+
+	console.log("newProducts", newProducts);
+	console.log("displayProducts", displayProducts);
 
 	return (
-		<main className={`container`}>
-			<h1>Products</h1>
-			{isLoading && (
-				<>
-					<div className="d-flex">{`Loading...`}</div>
-				</>
-			)}
-			{isSuccess && (
-				<>
-					<div className="d-flex margin-x">
-						{products?.data && data?.length && (
-							<>{productArticles}</>
+		<div className="container">
+			<div className="d-flex cell margin-x p-t-lg p-b-lg">
+				<aside className="cell mob-12 tab-3 desk-2">
+					<ProductFilters
+						onChangeFilters={onChangeFilters}
+						filters={filters}
+					/>
+				</aside>
+				<main className="cell mob-12 tab-9 desk-10">
+					<article className={`container`}>
+						<Typography variant="h3" variantMapping={{ h3: "h1" }}>
+							Products
+						</Typography>
+
+						{isLoading && (
+							<div className="d-flex">{`Loading...`}</div>
 						)}
-					</div>
-				</>
-			)}
-		</main>
+
+						{isSuccess && (
+							<div className="d-flex margin-x">
+								{displayProducts.length &&
+									displayProducts.map((item) => {
+										return (
+											<ProductArticle
+												key={item.id}
+												article={item}
+											/>
+										);
+									})}
+							</div>
+						)}
+
+						{isError && (
+							<div className="d-flex">{`Sorry, something went wrong. Please refresh the page and try again.`}</div>
+						)}
+					</article>
+				</main>
+			</div>
+		</div>
 	);
 };
 
 export default ProductsListing;
-
-export const getServerSideProps = async (context: any) => {
-	const response = fetch("http://localhost:3000/api/products");
-	const data = (await response).json();
-
-	return {
-		props: {}, // will be passed to the page component as props
-	};
-};

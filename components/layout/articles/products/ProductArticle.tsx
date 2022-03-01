@@ -1,5 +1,5 @@
 // Externals
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef, useState, forwardRef, createRef } from "react";
 import { useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
@@ -11,6 +11,7 @@ import classes from "./ProductArticle.module.scss";
 import { Product } from "../../../../templates/interfaces";
 import { cartActions } from "../../../../store/cart/cart-slice";
 import { CartItem } from "../../../../templates/interfaces";
+import AddToCartForm from "../../../Cart/AddToCartForm";
 
 type Props = {
 	article: Product;
@@ -69,7 +70,7 @@ const ProductPrice = (props: ProductPriceProps) => {
 
 const ProductArticle = (props: Props) => {
 	const { article: item } = props;
-	const inputRef = useRef<HTMLInputElement>(null);
+	const inputRef = createRef<HTMLInputElement>();
 	const dispatch = useDispatch();
 
 	const onAddToCart = (e: FormEvent<HTMLElement>) => {
@@ -93,14 +94,16 @@ const ProductArticle = (props: Props) => {
 		<>
 			<article
 				aria-labelledby={item.name}
-				className={`cell tab-4 desk-3 d-flex align-top ${classes.product}`}
+				className={`cell tab-4 d-flex align-top ${classes.product}`}
 			>
 				<Image
 					layout={`intrinsic`}
 					objectFit="cover"
+					objectPosition={"top"}
 					height={400}
 					width={400}
 					src={item.image}
+					alt={item.name}
 				/>
 				<div className={classes.product__content}>
 					<Typography
@@ -115,6 +118,8 @@ const ProductArticle = (props: Props) => {
 					<ProductPrice {...item} />
 				</div>
 				<div className={`align-self-bottom ${classes.product__footer}`}>
+					<AddToCartForm onAddToCart={onAddToCart} ref={inputRef} />
+
 					<form onSubmit={onAddToCart} className="d-flex margin-x">
 						<div className="cell mob-3">
 							<Input

@@ -8,7 +8,7 @@ import { ReducerMap } from "../../templates/interfaces";
 
 //
 // import Logo from "../../lib/icons/Logo";
-import CartButton from "../cart/CartButton";
+import CartButton from "../Cart/CartButton";
 import Navigation from "./Navigation";
 
 type Props = {};
@@ -19,14 +19,14 @@ const Header = (props: Props) => {
 	return (
 		<>
 			<AppBar
-				color="transparent"
-				position="relative"
+				color={"default"}
+				position="sticky"
 				variant="outlined"
 				className={`p-t-sm p-b-sm`}
 			>
 				<div className="container">
-					<div className="d-flex margin-x">
-						<div className="cell mob-12 tab-3">
+					<div className="d-flex margin-x align-center">
+						<div className="cell mob-6 tab-6 desk-auto">
 							<Link href="/" passHref>
 								<a>
 									<span
@@ -42,10 +42,12 @@ const Header = (props: Props) => {
 								</a>
 							</Link>
 						</div>
-						<div className="cell mob-12 tab-auto">
+
+						<div className="cell mob-6 tab-auto">
 							<Navigation label="Main navigation" />
 						</div>
-						<div className="cell mob-12 tab-shrink d-flex align-right">
+
+						<div className="cell mob-12 tab-shrink show-for-tablet d-flex align-right">
 							{cart && <CartButton cartState={cart} />}
 						</div>
 					</div>
