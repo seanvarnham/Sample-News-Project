@@ -89,8 +89,8 @@ const Products = (props: Props) => {
 export default Products;
 
 export const getStaticProps = async (context: any) => {
-	const location = process.env.LOCAL_URL || "http://localhost:3000";
-
+	const location = process.env.LOCAL_URL;
+	console.log("process.env.LOCAL_URL", process.env.LOCAL_URL);
 	const response = await fetch(`${location}/api/products`);
 	const data = await response.json();
 
