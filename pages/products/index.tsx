@@ -8,7 +8,7 @@ import ProductArticle from "../../components/layout/articles/products/ProductArt
 
 import { Product, Products } from "../../templates/interfaces";
 
-import ProductFilters from "../../components/products/ProductFilters";
+import ProductFilters from "../../components/Products/ProductFilters";
 
 type Props = {
 	newProducts: Products;
