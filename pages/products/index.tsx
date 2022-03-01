@@ -61,30 +61,29 @@ const Products = (props: Props) => {
 
 	return (
 		<div className="container">
-			<div className="d-flex cell margin-x p-t-lg p-b-lg">
+			<div className="d-flex margin-x p-t-lg p-b-lg">
 				<aside className="cell mob-12 tab-3 desk-2">
 					<ProductFilters
 						onChangeFilters={onChangeFilters}
 						filters={filters}
 					/>
 				</aside>
-				<main className="cell mob-12 tab-9 desk-10">
-					<section className={`container`}>
-						<Typography variant="h3" variantMapping={{ h3: "h1" }}>
-							Products
-						</Typography>
 
-						<div className="d-flex margin-x">
-							{displayProducts.length &&
-								displayProducts.map((item) => {
-									return (
-										<ProductArticle
-											key={item.id}
-											article={item}
-										/>
-									);
-								})}
-						</div>
+				<main className="cell mob-12 tab-9 desk-10">
+					<Typography variant="h3" variantMapping={{ h3: "h1" }}>
+						Products
+					</Typography>
+
+					<section className="d-flex margin-x">
+						{displayProducts.length &&
+							displayProducts.map((item) => {
+								return (
+									<ProductArticle
+										key={item.id}
+										article={item}
+									/>
+								);
+							})}
 					</section>
 				</main>
 			</div>
