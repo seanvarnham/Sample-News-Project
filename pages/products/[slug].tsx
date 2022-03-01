@@ -72,7 +72,7 @@ const SingleProduct = (props: Props) => {
 export default SingleProduct;
 
 export const getStaticPaths = async () => {
-	const response = await fetch("http://localhost:3000/api/products");
+	const response = await fetch("/api/products");
 	const data = await response.json();
 
 	return {
@@ -87,7 +87,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
 	const itemSlug = context?.params.slug;
-	const response = await fetch("http://localhost:3000/api/products");
+	const response = await fetch("/api/products");
 	const data = await response.json();
 
 	return {

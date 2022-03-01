@@ -41,11 +41,6 @@ const Products = (props: Props) => {
 		setFilters(newFilters);
 	};
 
-	// useEffect(() => {
-	// 	setDisplayProducts(products);
-	// 	setProductsReady(true);
-	// }, []);
-
 	useEffect(() => {
 		const filteredProducts = products?.filter((item) => {
 			return item.categories.some((cat) => filters.includes(cat));
@@ -94,7 +89,7 @@ const Products = (props: Props) => {
 export default Products;
 
 export const getStaticProps = async (context: any) => {
-	const response = await fetch("http://localhost:3000/api/products");
+	const response = await fetch(`/api/products`);
 	const data = await response.json();
 
 	return {
