@@ -10,16 +10,19 @@ import { Product, Products } from "../../templates/interfaces";
 
 import ProductFilters from "../../components/Products/ProductFilters";
 
-type Props = {};
+type Props = {
+	products: Products;
+};
 
 const Products = (props: Props) => {
+	const { products } = props;
 	const [filters, setFilters] = useState<string[]>([]);
-	const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
+	const [displayProducts, setDisplayProducts] = useState<Product[]>(products);
 	const [productsReady, setProductsReady] = useState<boolean>(false);
 
 	// Get Products via redux
-	const products = useFetchProductsQuery();
-	const { isError, isSuccess, isLoading, data } = products;
+	// const products = useFetchProductsQuery();
+	// const { isError, isSuccess, isLoading, data } = products;
 
 	const onChangeFilters = (e: FormEvent<HTMLInputElement>, cat: string) => {
 		let prevFilters = filters.slice();
@@ -39,28 +42,22 @@ const Products = (props: Props) => {
 	};
 
 	useEffect(() => {
-		if (isSuccess && data) {
-			setDisplayProducts(data);
-			setProductsReady(true);
-		}
-	}, [isSuccess, data]);
+		setDisplayProducts(products);
+		setProductsReady(true);
+	}, []);
 
 	useEffect(() => {
-		if (!productsReady) {
-			return;
-		}
-
-		const filteredProducts = data?.filter((item) => {
+		const filteredProducts = products?.filter((item) => {
 			return item.categories.some((cat) => filters.includes(cat));
 		});
 
 		if (filteredProducts?.length) {
 			setDisplayProducts(filteredProducts);
 		} else {
-			const newData: Product[] = data || [];
+			const newData: Product[] = products || [];
 			setDisplayProducts(newData);
 		}
-	}, [productsReady, filters, data]);
+	}, [productsReady, filters, products]);
 
 	return (
 		<div className="container">
@@ -72,33 +69,23 @@ const Products = (props: Props) => {
 					/>
 				</aside>
 				<main className="cell mob-12 tab-9 desk-10">
-					<article className={`container`}>
+					<section className={`container`}>
 						<Typography variant="h3" variantMapping={{ h3: "h1" }}>
 							Products
 						</Typography>
 
-						{isLoading && (
-							<div className="d-flex">{`Loading...`}</div>
-						)}
-
-						{isSuccess && (
-							<div className="d-flex margin-x">
-								{displayProducts.length &&
-									displayProducts.map((item) => {
-										return (
-											<ProductArticle
-												key={item.id}
-												article={item}
-											/>
-										);
-									})}
-							</div>
-						)}
-
-						{isError && (
-							<div className="d-flex">{`Sorry, something went wrong. Please refresh the page and try again.`}</div>
-						)}
-					</article>
+						<div className="d-flex margin-x">
+							{displayProducts.length &&
+								displayProducts.map((item) => {
+									return (
+										<ProductArticle
+											key={item.id}
+											article={item}
+										/>
+									);
+								})}
+						</div>
+					</section>
 				</main>
 			</div>
 		</div>
@@ -106,3 +93,14 @@ const Products = (props: Props) => {
 };
 
 export default Products;
+
+export const getStaticProps = async (context: any) => {
+	const response = await fetch("http://localhost:3000/api/products");
+	const data = await response.json();
+
+	return {
+		props: {
+			products: data,
+		},
+	};
+};
