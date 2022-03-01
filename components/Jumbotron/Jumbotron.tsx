@@ -3,7 +3,7 @@ import { ElementType, ReactNode } from "react";
 
 //
 import { PictureTag } from "../../templates/interfaces/image-interfaces";
-import CustomTag from "../Layout/CustomTag";
+import CustomTag from "../layout/CustomTag";
 
 //
 import compClasses from "./Jumbotron.module.scss";

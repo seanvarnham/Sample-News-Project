@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Typography } from "@material-ui/core";
-import ProductArticle from "../../components/Layout/articles/products/ProductArticle";
+import ProductArticle from "../../components/layout/articles/products/ProductArticle";
 import { useFetchProductsQuery } from "../../store/products/product-slice";
 // import categories from "../../lib/data/categories.json";
 import { Product, Products } from "../../templates/interfaces";
