@@ -15,8 +15,6 @@ interface DocumentProps {
 class MyDocument extends Document<DocumentProps> {
 	static async getInitialProps(ctx: any) {
 		const initialProps = await Document.getInitialProps(ctx);
-		// console.log("ctx", ctx);
-		// const state = ctx.store.getState();
 		const pageURL = ctx.req?.url;
 
 		return {
