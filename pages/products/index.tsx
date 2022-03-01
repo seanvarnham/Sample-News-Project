@@ -1,10 +1,14 @@
 import { FormEvent, useEffect, useState } from "react";
-import { Typography } from "@material-ui/core";
-import ProductArticle from "../../components/layout/articles/products/ProductArticle";
 import { useFetchProductsQuery } from "../../store/products/product-slice";
 // import categories from "../../lib/data/categories.json";
+
+import Typography from "@material-ui/core/Typography";
+
+import ProductArticle from "../../components/layout/articles/products/ProductArticle";
+
 import { Product, Products } from "../../templates/interfaces";
-import ProductFilters from "../../components/Products/ProductFilters";
+
+import ProductFilters from "../../components/products/ProductFilters";
 
 type Props = {
 	newProducts: Products;

@@ -1,8 +1,14 @@
 // Externals
-import { FormEvent, useRef, useState, forwardRef, createRef } from "react";
+import {
+	FormEvent,
+	// useRef,
+	// useState,
+	// forwardRef,
+	createRef,
+} from "react";
 import { useDispatch } from "react-redux";
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
+// import Button from "@material-ui/core/Button";
+// import Input from "@material-ui/core/Input";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 
@@ -11,7 +17,7 @@ import classes from "./ProductArticle.module.scss";
 import { Product } from "../../../../templates/interfaces";
 import { cartActions } from "../../../../store/cart/cart-slice";
 import { CartItem } from "../../../../templates/interfaces";
-import AddToCartForm from "../../../Cart/AddToCartForm";
+import AddToCartForm from "../../../cart/AddToCartForm";
 
 type Props = {
 	article: Product;

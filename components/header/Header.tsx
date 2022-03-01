@@ -8,7 +8,7 @@ import { ReducerMap } from "../../templates/interfaces";
 
 //
 // import Logo from "../../lib/icons/Logo";
-import CartButton from "../Cart/CartButton";
+import CartButton from "../cart/CartButton";
 import Navigation from "./Navigation";
 
 type Props = {};

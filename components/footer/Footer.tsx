@@ -1,6 +1,6 @@
 // Externals
 import { Paper } from "@material-ui/core";
-import Link from "next/link";
+// import Link from "next/link";
 
 // Internals
 import classes from "./Footer.module.scss";

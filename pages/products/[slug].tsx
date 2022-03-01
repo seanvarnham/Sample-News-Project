@@ -1,7 +1,11 @@
-import { Typography } from "@material-ui/core";
 import Image from "next/image";
-import AddToCart from "../../components/Cart/AddToCart";
+
+import Typography from "@material-ui/core/Typography";
+
+import AddToCart from "../../components/cart/AddToCart";
+
 import { Product } from "../../templates/interfaces";
+
 import classes from "./single-product.module.scss";
 
 type Props = {
@@ -10,7 +14,7 @@ type Props = {
 
 const SingleProduct = (props: Props) => {
 	const { product } = props;
-	console.log("product", product);
+	// console.log("product", product);
 
 	return (
 		<>

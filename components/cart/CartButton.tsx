@@ -6,7 +6,7 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 import { ReducerMap } from "../../templates/interfaces";
 
-import classes from "../Header/header.module.scss";
+import classes from "../header/header.module.scss";
 
 type Props = {};
 
