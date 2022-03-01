@@ -13,10 +13,7 @@ const nextConfig = {
 		formats: ["image/avif", "image/webp"],
 	},
 	env: {
-		LOCAL_URL:
-			NODE_ENV === "development"
-				? "http://localhost:3000"
-				: "https://typescript-cart-app.herokuapp.com",
+		LOCAL_URL: "https://typescript-cart-app.herokuapp.com",
 	},
 };
 
