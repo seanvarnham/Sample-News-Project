@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 
 import Link from "next/link";
 
-import Jumbotron from "../components/jumbotron/Jumbotron";
+import Jumbotron from "../components/Jumbotron/Jumbotron";
 import PageHead from "../components/header/PageHead";
 // import { Product } from "../templates/interfaces";
 
