@@ -25,11 +25,11 @@ const CartButton = (props: Props) => {
 		>
 			<ShoppingCart />
 
-			<span className={classes[`cart-container`]}>
-				{cart.totalQuantity && cart.totalQuantity >= 1 && (
+			{cart?.totalQuantity >= 1 && (
+				<span className={classes[`cart-container`]}>
 					<span>{cart.totalQuantity}</span>
-				)}
-			</span>
+				</span>
+			)}
 		</Button>
 	);
 };
