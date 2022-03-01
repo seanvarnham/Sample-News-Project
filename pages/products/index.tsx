@@ -18,7 +18,7 @@ const Products = (props: Props) => {
 	const { products } = props;
 	const [filters, setFilters] = useState<string[]>([]);
 	const [displayProducts, setDisplayProducts] = useState<Product[]>(products);
-	const [productsReady, setProductsReady] = useState<boolean>(false);
+	// const [productsReady, setProductsReady] = useState<boolean>(false);
 
 	// Get Products via redux
 	// const products = useFetchProductsQuery();
@@ -41,10 +41,10 @@ const Products = (props: Props) => {
 		setFilters(newFilters);
 	};
 
-	useEffect(() => {
-		setDisplayProducts(products);
-		setProductsReady(true);
-	}, []);
+	// useEffect(() => {
+	// 	setDisplayProducts(products);
+	// 	setProductsReady(true);
+	// }, []);
 
 	useEffect(() => {
 		const filteredProducts = products?.filter((item) => {
@@ -57,7 +57,7 @@ const Products = (props: Props) => {
 			const newData: Product[] = products || [];
 			setDisplayProducts(newData);
 		}
-	}, [productsReady, filters, products]);
+	}, [filters, products]);
 
 	return (
 		<div className="container">
