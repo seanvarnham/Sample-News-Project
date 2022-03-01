@@ -1,6 +1,5 @@
 //
-import Image from "next/image";
-import { ElementType } from "react";
+import { ElementType, ReactNode } from "react";
 
 //
 import { PictureTag } from "../../templates/interfaces/image-interfaces";
@@ -10,7 +9,7 @@ import CustomTag from "../Layout/CustomTag";
 import compClasses from "./Jumbotron.module.scss";
 
 type Props = {
-	children?: any;
+	children?: ReactNode;
 	classes: string;
 	tagName: ElementType;
 	source: PictureTag;

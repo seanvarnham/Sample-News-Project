@@ -1,7 +1,7 @@
 type Props = {};
 
-const index = (props: Props) => {
-	return <div>index</div>;
+const Contact = (props: Props) => {
+	return <div>Contact</div>;
 };
 
-export default index;
+export default Contact;
