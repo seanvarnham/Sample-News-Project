@@ -111,7 +111,7 @@ const ProductArticle = (props: Props) => {
 					src={item.image}
 					alt={item.name}
 				/>
-				<div className={classes.product__content}>
+				<div className={`cell ${classes.product__content}`}>
 					<Typography
 						gutterBottom
 						variant="h5"
