@@ -16,7 +16,7 @@ type Props = {
 	products: Products;
 };
 
-const Products = (props: Props) => {
+const ProductsPage = (props: Props) => {
 	const { products } = props;
 	const [filters, setFilters] = useState<string[]>([]);
 	const [displayProducts, setDisplayProducts] = useState<Product[]>(products);
@@ -92,7 +92,7 @@ const Products = (props: Props) => {
 	);
 };
 
-export default Products;
+export default ProductsPage;
 
 export const getServerSideProps = async (context: any) => {
 	const res = await productsListHandler().then((data) => {
