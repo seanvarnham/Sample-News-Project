@@ -10,10 +10,15 @@
 // 	res.status(200).json(ProductsList);
 // };
 
-// export default productsListHandler;
-import { Products } from "../../templates/interfaces";
+/**
+ *
+ *
+ */
 
-import { NextApiRequest, NextApiResponse } from "next";
+// export default productsListHandler;
+// import { Products } from "../../templates/interfaces";
+
+// import { NextApiRequest, NextApiResponse } from "next";
 // import ProductsList from "../../lib/data/ProductsList";
 
 const productsListHandler = async () => {
