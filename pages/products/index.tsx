@@ -10,6 +10,7 @@ import { Product, Products } from "../../templates/interfaces";
 
 import ProductFilters from "../../components/Products/ProductFilters";
 import productsListHandler from "../api/products";
+import PageHead from "../../components/header/PageHead";
 
 type Props = {
 	products: Products;
@@ -56,34 +57,38 @@ const Products = (props: Props) => {
 	}, [filters, products]);
 
 	return (
-		<div className="container">
-			<div className="d-flex margin-x p-t-lg p-b-lg">
-				<aside className="cell mob-12 tab-3 desk-2">
-					<ProductFilters
-						onChangeFilters={onChangeFilters}
-						filters={filters}
-					/>
-				</aside>
+		<>
+			<PageHead title={"Products | Party Store"} />
 
-				<main className="cell mob-12 tab-9 desk-10">
-					<Typography variant="h3" variantMapping={{ h3: "h1" }}>
-						Products
-					</Typography>
+			<div className="container">
+				<div className="d-flex margin-x p-t-lg p-b-lg">
+					<aside className="cell mob-12 tab-3 desk-2">
+						<ProductFilters
+							onChangeFilters={onChangeFilters}
+							filters={filters}
+						/>
+					</aside>
 
-					<section className="d-flex margin-x">
-						{displayProducts.length &&
-							displayProducts.map((item) => {
-								return (
-									<ProductArticle
-										key={item.id}
-										article={item}
-									/>
-								);
-							})}
-					</section>
-				</main>
+					<main className="cell mob-12 tab-9 desk-10">
+						<Typography variant="h3" variantMapping={{ h3: "h1" }}>
+							Products
+						</Typography>
+
+						<section className="d-flex margin-x">
+							{displayProducts.length &&
+								displayProducts.map((item) => {
+									return (
+										<ProductArticle
+											key={item.id}
+											article={item}
+										/>
+									);
+								})}
+						</section>
+					</main>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
