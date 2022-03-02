@@ -1,7 +1,22 @@
+import PageHead from "../../components/header/PageHead";
+import classes from "./contact.module.scss";
+
 type Props = {};
 
 const Contact = (props: Props) => {
-	return <div>Contact</div>;
+	return (
+		<>
+			<PageHead title={"Contact | Party Store"} />
+
+			<main>
+				<article className="container p-t-lg p-b-lg">
+					<section
+						className={classes.wrapper}
+					>{`Nothing to see here..`}</section>
+				</article>
+			</main>
+		</>
+	);
 };
 
 export default Contact;
