@@ -9,6 +9,7 @@ import ProductArticle from "../../components/layout/articles/products/ProductArt
 import { Product, Products } from "../../templates/interfaces";
 
 import ProductFilters from "../../components/Products/ProductFilters";
+import productsListHandler from "../api/products";
 
 type Props = {
 	products: Products;
@@ -88,15 +89,14 @@ const Products = (props: Props) => {
 
 export default Products;
 
-export const getStaticProps = async (context: any) => {
-	const location = process.env.LOCAL_URL;
-	console.log("process.env.LOCAL_URL", process.env.LOCAL_URL);
-	const response = await fetch(`${location}/api/products`);
-	const data = await response.json();
+export const getServerSideProps = async (context: any) => {
+	const res = await productsListHandler().then((data) => {
+		return data;
+	});
 
 	return {
 		props: {
-			products: data,
+			products: res,
 		},
 	};
 };

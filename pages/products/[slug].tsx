@@ -7,6 +7,7 @@ import AddToCart from "../../components/cart/AddToCart";
 import { Product } from "../../templates/interfaces";
 
 import classes from "./single-product.module.scss";
+import productsListHandler from "../api/products";
 
 type Props = {
 	product: Product;
@@ -72,10 +73,9 @@ const SingleProduct = (props: Props) => {
 export default SingleProduct;
 
 export const getStaticPaths = async () => {
-	const location = process.env.LOCAL_URL;
-
-	const response = await fetch(`${location}/api/products`);
-	const data = await response.json();
+	const data = await productsListHandler().then((res) => {
+		return res;
+	});
 
 	return {
 		paths: data?.map((item: Product) => ({
@@ -88,11 +88,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: any) => {
-	const location = process.env.LOCAL_URL;
+	const data = await productsListHandler().then((res) => {
+		return res;
+	});
 
 	const itemSlug = context?.params.slug;
-	const response = await fetch(`${location}/api/products`);
-	const data = await response.json();
 
 	return {
 		props: {
