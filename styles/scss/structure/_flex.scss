@@ -687,7 +687,6 @@
 	}
 }
 
-//  Medium (margin-x) Classes
 .margin-x {
 	> .auto {
 		@include breakpoint(mediumUp) {
@@ -759,6 +758,8 @@
 			width: calc(100% - 1.875rem);
 		}
 	}
+
+	// Tablet sizes
 	> .tab-auto {
 		@include breakpoint(mediumUp) {
 			width: auto;
@@ -830,10 +831,8 @@
 			width: calc(100% - 1.875rem);
 		}
 	}
-}
 
-//  Large (margin-x) Classes
-.margin-x {
+	//  Large (margin-x) Classes
 	> .desk-auto {
 		@include breakpoint(largeUp) {
 			width: auto;
