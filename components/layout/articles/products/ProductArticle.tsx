@@ -129,26 +129,6 @@ const ProductArticle = (props: Props) => {
 						ref={inputRef}
 						item={item}
 					/>
-					{/* 
-					<form onSubmit={onAddToCart} className="d-flex margin-x">
-						<div className="cell mob-3">
-							<Input
-								inputRef={inputRef}
-								id={item.name}
-								type="number"
-								placeholder="0"
-							/>
-						</div>
-						<div className="cell auto d-flex align-right">
-							<Button
-								type="submit"
-								color="secondary"
-								variant="outlined"
-							>
-								Add to cart
-							</Button>
-						</div>
-					</form> */}
 				</div>
 			</article>
 		</>
