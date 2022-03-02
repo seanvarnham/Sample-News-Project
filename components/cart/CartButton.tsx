@@ -10,6 +10,16 @@ type Props = {};
 
 const CartButton = (props: Props) => {
 	const cart = useSelector((state: ReducerMap) => state.cart);
+	let cartState = cart;
+	let localCart;
+
+	if (typeof window !== "undefined") {
+		localCart = localStorage.getItem("cart");
+
+		if (localCart) {
+			cartState = JSON.parse(localCart);
+		}
+	}
 
 	const onClickCartButton = (e: MouseEvent) => {
 		e.preventDefault();
@@ -23,9 +33,9 @@ const CartButton = (props: Props) => {
 		>
 			<ShoppingCart />
 
-			{cart?.totalQuantity >= 1 && (
+			{cartState?.totalQuantity >= 1 && (
 				<span>
-					<span>{cart.totalQuantity}</span>
+					<span>{cartState.totalQuantity}</span>
 				</span>
 			)}
 		</Button>

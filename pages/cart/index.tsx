@@ -8,12 +8,75 @@ type Props = {};
 
 const Cart = (props: Props) => {
 	const cart = useSelector((state: ReducerMap) => state.cart);
+	let cartState = cart;
+	let localCart;
+
+	if (typeof window !== "undefined") {
+		localCart = localStorage.getItem("cart");
+
+		if (localCart) {
+			cartState = JSON.parse(localCart);
+		}
+	}
+
+	const getFormattedPrice = (price: number) => {
+		const newPrice = price.toFixed(2);
+
+		return `£${newPrice}`;
+	};
+
 	let content;
 
-	if (cart.items.length === 0) {
+	if (cartState.totalQuantity === 0) {
 		content = (
 			<>
 				<Typography paragraph>Your cart is currently empty</Typography>
+			</>
+		);
+	}
+
+	if (cartState.totalQuantity > 0) {
+		content = (
+			<>
+				<div className="margin-x cart-table">
+					<div className="cell d-flex cart-table__header">
+						<div className="cell mob-8">
+							<strong>Item</strong>
+						</div>
+						<div className="cell mob-2 text-align-center">
+							<strong>Qty</strong>
+						</div>
+						<div className="cell mob-2 text-align-right">
+							<strong>Value</strong>
+						</div>
+					</div>
+
+					{cartState.items.map((item) => {
+						return (
+							<>
+								<div className="cell d-flex" key={item.id}>
+									<div className="mob-8">{item.name}</div>
+									<div className="mob-2 text-align-center">
+										{item.quantity}
+									</div>
+									<div className="mob-2 text-align-right">
+										{getFormattedPrice(item.value)}
+									</div>
+								</div>
+							</>
+						);
+					})}
+
+					<div className="cell d-flex cart-table__footer p-t-lg">
+						<div className="cell mob-8"></div>
+						<div className="cell mob-2 text-align-center">
+							{cartState.totalQuantity}
+						</div>
+						<div className="cell mob-2 text-align-right">
+							{getFormattedPrice(cartState.totalValue)}
+						</div>
+					</div>
+				</div>
 			</>
 		);
 	}
@@ -24,7 +87,7 @@ const Cart = (props: Props) => {
 
 			<main>
 				<article className="container p-t-lg p-b-lg">
-					<section>
+					<section className="p-b-lg">
 						<Typography
 							gutterBottom
 							variant="h4"
@@ -32,9 +95,9 @@ const Cart = (props: Props) => {
 						>
 							Your cart
 						</Typography>
-
-						{content}
 					</section>
+
+					<section>{content}</section>
 				</article>
 			</main>
 		</>

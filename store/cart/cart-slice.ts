@@ -1,12 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem, cartState } from "../../templates/interfaces";
-
-// item = [
-//     'id',
-// 	'name',
-// 	'value',
-// 	'quantity',
-// ]
+import {
+	CartItem,
+	cartState,
+	Product,
+	Products,
+} from "../../templates/interfaces";
 
 export const initialState: cartState = {
 	items: [] as CartItem[],
@@ -20,8 +18,26 @@ export const cartSlice = createSlice({
 	reducers: {
 		clearCart(state, action) {
 			state = initialState;
+			if (typeof window !== "undefined") {
+				localStorage.setItem("cart", JSON.stringify(initialState));
+			}
 		},
 		addToCart(state, action) {
+			if (typeof window !== "undefined") {
+				const previousCart = localStorage.getItem("cart");
+				console.log("previousCart", previousCart);
+
+				let prevCartData;
+				if (previousCart) {
+					prevCartData = JSON.parse(previousCart);
+					console.log("prevCartData", prevCartData);
+
+					state.items = prevCartData.items;
+					state.totalValue = prevCartData.totalValue;
+					state.totalQuantity = prevCartData.totalQuantity;
+				}
+			}
+
 			const newItem = action.payload;
 			const existingItem = state.items.find(
 				(item) => item.id === newItem.id
@@ -41,10 +57,23 @@ export const cartSlice = createSlice({
 				(prod: CartItem) => prod.quantity
 			);
 
-			state.totalValue = totalValue.reduce((prev, curr) => prev + curr);
-			state.totalQuantity = totalQuantity.reduce(
+			const reducedTotalValue = totalValue.reduce(
 				(prev, curr) => prev + curr
 			);
+			const reducedTotalQuantity = totalQuantity.reduce(
+				(prev, curr) => prev + curr
+			);
+			state.totalValue = reducedTotalValue;
+			state.totalQuantity = reducedTotalQuantity;
+
+			if (typeof window !== "undefined") {
+				const storeLocally = {
+					items: state.items,
+					totalValue: reducedTotalValue,
+					totalQuantity: reducedTotalQuantity,
+				};
+				localStorage.setItem("cart", JSON.stringify(storeLocally));
+			}
 		},
 		removeFromCart(state, action) {
 			// console.log("removeFromCart state", state);
@@ -57,8 +86,9 @@ export const cartSlice = createSlice({
 			} else {
 				// existingItem.quantity--;
 			}
+
+			localStorage.setItem("cart", JSON.stringify(state));
 		},
-		// incrementByAmount(state, action: PayloadAction<number>) {},
 	},
 });
 
