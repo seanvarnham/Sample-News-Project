@@ -1,12 +1,20 @@
-import { Typography } from "@material-ui/core";
+// Externals & Interfaces
 import { useSelector } from "react-redux";
-import PageHead from "../../components/header/PageHead";
 import { ReducerMap } from "../../templates/interfaces";
-// import classes from "./cart.module.scss";
+
+// MUI
+import { Typography } from "@material-ui/core";
+
+// Internals
+import PageHead from "../../components/header/PageHead";
+import CartDisplay from "../../components/cart/CartDisplay";
+import FormattedPrice from "../../lib/helpers/getFormattedPrice";
+import getCartState from "../../lib/helpers/getCartState";
 
 type Props = {};
 
 const Cart = (props: Props) => {
+	// const cartState = getCartState();
 	const cart = useSelector((state: ReducerMap) => state.cart);
 	let cartState = cart;
 	let localCart;
@@ -19,19 +27,11 @@ const Cart = (props: Props) => {
 		}
 	}
 
-	const getFormattedPrice = (price: number) => {
-		const newPrice = price.toFixed(2);
-
-		return `£${newPrice}`;
-	};
-
 	let content;
 
 	if (cartState.totalQuantity === 0) {
 		content = (
-			<>
-				<Typography paragraph>Your cart is currently empty</Typography>
-			</>
+			<Typography paragraph>Your cart is currently empty</Typography>
 		);
 	}
 
@@ -53,17 +53,15 @@ const Cart = (props: Props) => {
 
 					{cartState.items.map((item) => {
 						return (
-							<>
-								<div className="cell d-flex" key={item.id}>
-									<div className="mob-8">{item.name}</div>
-									<div className="mob-2 text-align-center">
-										{item.quantity}
-									</div>
-									<div className="mob-2 text-align-right">
-										{getFormattedPrice(item.value)}
-									</div>
+							<div className="cell d-flex" key={item.id}>
+								<div className="mob-8">{item.name}</div>
+								<div className="mob-2 text-align-center">
+									{item.quantity}
 								</div>
-							</>
+								<div className="mob-2 text-align-right">
+									<FormattedPrice value={item.value} />
+								</div>
+							</div>
 						);
 					})}
 
@@ -73,7 +71,7 @@ const Cart = (props: Props) => {
 							{cartState.totalQuantity}
 						</div>
 						<div className="cell mob-2 text-align-right">
-							{getFormattedPrice(cartState.totalValue)}
+							<FormattedPrice value={cartState.totalValue} />
 						</div>
 					</div>
 				</div>
@@ -97,7 +95,13 @@ const Cart = (props: Props) => {
 						</Typography>
 					</section>
 
-					<section>{content}</section>
+					<section>
+						{cartState.totalQuantity > 0 && (
+							<>
+								<CartDisplay />
+							</>
+						)}
+					</section>
 				</article>
 			</main>
 		</>
