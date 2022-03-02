@@ -1,4 +1,4 @@
-// Externals
+// Externals & Interfaces
 import {
 	FormEvent,
 	// useRef,
@@ -7,27 +7,22 @@ import {
 	createRef,
 } from "react";
 import { useDispatch } from "react-redux";
-// import Button from "@material-ui/core/Button";
-// import Input from "@material-ui/core/Input";
+import { CartItem, Product } from "../../../../templates/interfaces";
+
+// MUI
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 
 // Internals
 import classes from "./ProductArticle.module.scss";
-import { Product } from "../../../../templates/interfaces";
-import { cartActions } from "../../../../store/cart/cart-slice";
-import { CartItem } from "../../../../templates/interfaces";
 import AddToCartForm from "../../../cart/AddToCartForm";
+import { cartActions } from "../../../../store/cart/cart-slice";
+import FormattedPrice from "../../../../lib/helpers/getFormattedPrice";
 
 type Props = {
 	article: Product;
 };
 
-const getFormattedPrice = (price: number) => {
-	const newPrice = price.toFixed(2);
-
-	return `£${newPrice}`;
-};
 type ProductPriceProps = Product;
 
 const ProductPrice = (props: ProductPriceProps) => {
@@ -46,7 +41,7 @@ const ProductPrice = (props: ProductPriceProps) => {
 					variant="h6"
 					variantMapping={{ h6: "p" }}
 				>
-					{getFormattedPrice(+stdPrice)}
+					<FormattedPrice value={+stdPrice} />
 				</Typography>
 			</div>
 		);
@@ -57,14 +52,17 @@ const ProductPrice = (props: ProductPriceProps) => {
 			<>
 				<span className="d-flex align-center">
 					<Typography variant="h6" variantMapping={{ h6: "p" }}>
-						{getFormattedPrice(+salePrice)}
+						<FormattedPrice value={+salePrice} />
 					</Typography>
+
 					<Typography
 						className={`${classes.product__price} ${classes["--prev"]}`}
 						variant="body2"
 						variantMapping={{ body2: "p" }}
 					>
-						<s>{getFormattedPrice(+stdPrice)}</s>
+						<s>
+							<FormattedPrice value={+stdPrice} />
+						</s>
 					</Typography>
 				</span>
 			</>
