@@ -1,17 +1,22 @@
 import { MouseEvent, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 import { ReducerMap } from "../../templates/interfaces";
-import { Paper, Popover } from "@material-ui/core";
+import { Paper, Popover, Typography } from "@material-ui/core";
 import CartDisplay from "./CartDisplay";
 import Link from "next/link";
+import { cartActions, initialState } from "../../store/cart/cart-slice";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 const CartButton = (props: Props) => {
+	const dispatch = useDispatch();
+	const router = useRouter();
+
 	const cart = useSelector((state: ReducerMap) => state.cart);
 	let cartState = cart;
 	let localCart;
@@ -36,6 +41,17 @@ const CartButton = (props: Props) => {
 	const open = Boolean(anchorEl);
 	const id = open ? "cartPopover" : undefined;
 
+	const onClearCart = () => {
+		onCloseCartButton();
+		router.reload();
+
+		dispatch(cartActions.clearCart(null));
+
+		if (typeof window !== "undefined") {
+			localStorage.setItem("cart", JSON.stringify(initialState));
+		}
+	};
+
 	return (
 		<>
 			<Button
@@ -47,6 +63,7 @@ const CartButton = (props: Props) => {
 			>
 				{cartState?.totalQuantity && cartState.totalQuantity}
 			</Button>
+
 			<Popover
 				id={id}
 				open={open}
@@ -62,22 +79,40 @@ const CartButton = (props: Props) => {
 				}}
 			>
 				<Paper className="d-flex padding-x" style={{ width: "300px" }}>
-					<div className="d-flex margin-x p-t-sm p-b-sm">
-						<div className="cell">
-							<CartDisplay isCompact />
-						</div>
+					<div className="mob-12 p-t-sm p-b-sm">
+						{cartState.totalQuantity ? (
+							<>
+								<div className="cell">
+									<CartDisplay isCompact />
+								</div>
 
-						<div className="cell p-t-md d-flex align-right">
-							<Link href="/cart" passHref>
-								<Button
-									color="secondary"
-									variant="outlined"
-									onClick={onCloseCartButton}
-								>
-									View Cart
-								</Button>
-							</Link>
-						</div>
+								<div className="cell p-t-md d-flex align-justify">
+									<Button
+										color="secondary"
+										variant="text"
+										onClick={onClearCart}
+									>
+										Empty Cart
+									</Button>
+
+									<Link href="/cart" passHref>
+										<Button
+											color="secondary"
+											variant="text"
+											onClick={onCloseCartButton}
+										>
+											View Cart
+										</Button>
+									</Link>
+								</div>
+							</>
+						) : (
+							<>
+								<Typography variant="body1">
+									...well, this is awkward.
+								</Typography>
+							</>
+						)}
 					</div>
 				</Paper>
 			</Popover>
