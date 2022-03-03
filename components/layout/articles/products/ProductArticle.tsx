@@ -82,7 +82,7 @@ const ProductArticle = (props: Props) => {
 		e.preventDefault();
 
 		const inputValue: any = inputRef?.current?.value;
-		if (inputValue <= 1) {
+		if (inputValue < 1) {
 			return;
 		}
 
