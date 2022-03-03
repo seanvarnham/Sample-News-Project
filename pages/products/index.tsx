@@ -70,7 +70,11 @@ const ProductsPage = (props: Props) => {
 					</aside>
 
 					<main className="cell mob-12 tab-9 desk-10">
-						<Typography variant="h3" variantMapping={{ h3: "h1" }}>
+						<Typography
+							gutterBottom
+							variant="h4"
+							variantMapping={{ h4: "h1" }}
+						>
 							Products
 						</Typography>
 
