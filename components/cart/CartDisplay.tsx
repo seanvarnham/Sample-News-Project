@@ -1,4 +1,4 @@
-import getCartState from "../../lib/helpers/getCartState";
+import useCartState from "../../lib/hooks/useCartState";
 import FormattedPrice from "../../lib/helpers/getFormattedPrice";
 import classes from "./cart.module.scss";
 
@@ -8,7 +8,7 @@ type Props = {
 
 const CartDisplay = (props: Props) => {
 	const { isCompact } = props;
-	const cartState = getCartState();
+	const cartState = useCartState();
 
 	return (
 		<div

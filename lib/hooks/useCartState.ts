@@ -1,8 +1,13 @@
 import { useSelector } from "react-redux";
 import { ReducerMap } from "../../templates/interfaces";
 
-const getCartState = () => {
+const useCartState = () => {
 	const cart = useSelector((state: ReducerMap) => state.cart);
+
+	if (!cart) {
+		throw new Error("useCartState couldn't find a cart state.");
+	}
+
 	let cartState = cart;
 	let localCart;
 
@@ -17,4 +22,4 @@ const getCartState = () => {
 	return cartState;
 };
 
-export default getCartState;
+export default useCartState;
