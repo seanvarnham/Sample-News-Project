@@ -8,26 +8,15 @@ import { Typography } from "@material-ui/core";
 // Internals
 import PageHead from "../../components/header/PageHead";
 import CartDisplay from "../../components/cart/CartDisplay";
-import FormattedPrice from "../../lib/helpers/getFormattedPrice";
+import useCartState from "lib/hooks/useCartState";
 
 type Props = {};
 
 const Cart = (props: Props) => {
-	const cart = useSelector((state: ReducerMap) => state.cart);
-	let cartState = cart;
-	let localCart;
-
-	if (typeof window !== "undefined") {
-		localCart = localStorage.getItem("cart");
-
-		if (localCart) {
-			cartState = JSON.parse(localCart);
-		}
-	}
+	const cartState = useCartState();
 
 	let content;
 
-	console.log("cartState", cartState);
 	if (cartState.totalQuantity === 0) {
 		content = (
 			<Typography paragraph>Your cart is currently empty</Typography>
@@ -59,7 +48,7 @@ const Cart = (props: Props) => {
 						{content}
 					</section>
 
-					<section>{cartState.totalQuantity > 0 && <></>}</section>
+					{/* <section>{cartState.totalQuantity > 0 && <></>}</section> */}
 				</article>
 			</main>
 		</>
