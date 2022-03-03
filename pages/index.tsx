@@ -36,10 +36,14 @@ const Home = () => {
 						source={pictures}
 						classes={`d-flex align-center-middle text-align-center`}
 					>
-						<Typography variant="h2" variantMapping={{ h2: "h1" }}>
+						<Typography
+							gutterBottom
+							variant="h2"
+							variantMapping={{ h2: "h1" }}
+						>
 							Welcome to the No. 10 Party Shop
 						</Typography>
-						<Link passHref href={`/products`}>
+						<Link href={`/products`} passHref>
 							<Button variant="contained" color="secondary">
 								{`Let's get wasted!`}
 							</Button>

@@ -35,7 +35,7 @@ const Navigation = (props: Props) => {
 								key={navItem.name}
 								className={navItemClasses(navItem.url)}
 							>
-								<Link passHref={true} href={navItem.url}>
+								<Link href={navItem.url} passHref>
 									<a aria-current={current === navItem.url}>
 										{navItem.name}
 									</a>
