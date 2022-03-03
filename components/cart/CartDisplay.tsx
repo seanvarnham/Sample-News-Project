@@ -1,6 +1,6 @@
 import useCartState from "../../lib/hooks/useCartState";
 import FormattedPrice from "../../lib/helpers/getFormattedPrice";
-import classes from "./cart.module.scss";
+import classes from "./CartDisplay.module.scss";
 
 type Props = {
 	isCompact?: boolean;
