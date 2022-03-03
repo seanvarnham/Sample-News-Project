@@ -2,6 +2,7 @@ import { FormEvent, forwardRef, Ref } from "react";
 
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
+import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 import { Product } from "../../templates/interfaces";
 
@@ -25,7 +26,7 @@ const AddForm = (props: Props, ref: Ref<HTMLInputElement>) => {
 			</div>
 			<div className="cell auto d-flex align-right">
 				<Button type="submit" color="secondary" variant="outlined">
-					Add to cart
+					<AddShoppingCart />
 				</Button>
 			</div>
 		</form>

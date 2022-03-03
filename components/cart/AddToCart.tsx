@@ -24,12 +24,7 @@ const AddToCart = (props: Props) => {
 			onClick={onClickCartButton}
 		>
 			<AddShoppingCart />
-			Add to cart
-			{/* <span className={classes[`cart-container`]}>
-				{cart.totalQuantity && cart.totalQuantity >= 1 && (
-					<span>{cart.totalQuantity}</span>
-				)}
-			</span> */}
+			Add
 		</Button>
 	);
 };
