@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { render } from "../../test-utils/testing-library-utils";
+
 import Portal from "./Portal";
 
 describe("Portal component tests", () => {

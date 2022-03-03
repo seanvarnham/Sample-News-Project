@@ -1,5 +1,5 @@
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../test-utils/testing-library-utils";
+
 import FormattedPrice, { getFormattedPrice } from "./getFormattedPrice";
 
 describe("FormattedPrice Component", () => {

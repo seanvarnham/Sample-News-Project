@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import GenerateId, { generateUniqueId } from "./uniqueId";
+import { generateUniqueId } from "./uniqueId";
 
 describe("generateUniqueId", () => {
 	const returnedFormat = generateUniqueId();
