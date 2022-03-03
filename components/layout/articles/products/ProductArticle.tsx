@@ -107,7 +107,7 @@ const ProductArticle = (props: Props) => {
 				aria-labelledby={item.name}
 				className={`cell tab-4 d-flex align-top ${classes.product}`}
 			>
-				<Link href={`/products${item.url}`}>
+				<Link passHref href={`/products${item.url}`}>
 					<Image
 						layout={`intrinsic`}
 						objectFit="cover"
