@@ -7,6 +7,21 @@
 	border-radius: rem-calc(6);
 	overflow: hidden;
 	transition: all 0.4s ease;
+
+	img {
+		@include breakpoint(largeUp) {
+			transform: scale(1);
+			transition: all 0.8s ease;
+		}
+
+		&:hover {
+			@include breakpoint(largeUp) {
+				transform: scale(1.1);
+				cursor: pointer;
+			}
+		}
+	}
+
 	//
 	// transform: translateY(#{rem-calc(50)});
 	// opacity: 0;
