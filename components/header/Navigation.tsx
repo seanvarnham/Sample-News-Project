@@ -36,13 +36,7 @@ const Navigation = (props: Props) => {
 								className={navItemClasses(navItem.url)}
 							>
 								<Link passHref={true} href={navItem.url}>
-									<a
-										aria-current={
-											current === navItem.url
-												? true
-												: undefined
-										}
-									>
+									<a aria-current={current === navItem.url}>
 										{navItem.name}
 									</a>
 								</Link>
