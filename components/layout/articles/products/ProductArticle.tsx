@@ -18,6 +18,7 @@ import classes from "./ProductArticle.module.scss";
 import AddToCartForm from "../../../cart/AddToCartForm";
 import { cartActions } from "../../../../store/cart/cart-slice";
 import FormattedPrice from "../../../../lib/helpers/getFormattedPrice";
+import Link from "next/link";
 
 type Props = {
 	article: Product;
@@ -78,7 +79,13 @@ const ProductArticle = (props: Props) => {
 	const dispatch = useDispatch();
 
 	const onAddToCart = (e: FormEvent<HTMLElement>) => {
+		e.preventDefault();
+
 		const inputValue: any = inputRef?.current?.value;
+		if (inputValue <= 1) {
+			return;
+		}
+
 		const usePrice = item.onSale
 			? item.price.salePrice
 			: item.price.stdPrice;
@@ -100,15 +107,17 @@ const ProductArticle = (props: Props) => {
 				aria-labelledby={item.name}
 				className={`cell tab-4 d-flex align-top ${classes.product}`}
 			>
-				<Image
-					layout={`intrinsic`}
-					objectFit="cover"
-					objectPosition={"top"}
-					height={400}
-					width={400}
-					src={item.image}
-					alt={item.name}
-				/>
+				<Link href={`/products${item.url}`}>
+					<Image
+						layout={`intrinsic`}
+						objectFit="cover"
+						objectPosition={"top"}
+						height={400}
+						width={400}
+						src={item.image}
+						alt={item.name}
+					/>
+				</Link>
 				<div className={`cell ${classes.product__content}`}>
 					<Typography
 						gutterBottom
@@ -121,7 +130,9 @@ const ProductArticle = (props: Props) => {
 
 					<ProductPrice {...item} />
 				</div>
-				<div className={`align-self-bottom ${classes.product__footer}`}>
+				<div
+					className={`cell align-self-bottom ${classes.product__footer}`}
+				>
 					<AddToCartForm
 						onAddToCart={onAddToCart}
 						ref={inputRef}
