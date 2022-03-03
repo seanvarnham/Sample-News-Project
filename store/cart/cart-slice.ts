@@ -1,12 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-	CartItem,
-	cartState,
-	Product,
-	Products,
-} from "../../templates/interfaces";
+import { CartItem, CartState } from "../../templates/interfaces";
 
-export const initialState: cartState = {
+export const initialState: CartState = {
 	items: [] as CartItem[],
 	totalValue: 0,
 	totalQuantity: 0,
@@ -16,8 +11,9 @@ export const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		clearCart(state, action) {
+		clearCart(state, action?) {
 			state = initialState;
+
 			if (typeof window !== "undefined") {
 				localStorage.setItem("cart", JSON.stringify(initialState));
 			}
@@ -25,7 +21,7 @@ export const cartSlice = createSlice({
 		addToCart(state, action) {
 			if (typeof window !== "undefined") {
 				const previousCart = localStorage.getItem("cart");
-				console.log("previousCart", previousCart);
+				// console.log("previousCart", previousCart);
 
 				let prevCartData;
 				if (previousCart) {

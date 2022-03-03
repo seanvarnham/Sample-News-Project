@@ -10,7 +10,7 @@ export interface CartItem {
 	quantity: number;
 }
 
-export interface cartState {
+export interface CartState {
 	items: CartItem[];
 	totalValue: number;
 	totalQuantity: number;
@@ -33,6 +33,6 @@ export interface Product {
 export type Products = Product[];
 
 export interface ReducerMap {
-	cart: cartState;
+	cart: CartState;
 	products: Product[];
 }
