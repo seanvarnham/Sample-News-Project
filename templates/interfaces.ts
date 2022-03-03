@@ -34,5 +34,5 @@ export type Products = Product[];
 
 export interface ReducerMap {
 	cart: CartState;
-	products: Product[];
+	products?: Product[];
 }
