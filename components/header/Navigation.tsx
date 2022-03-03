@@ -1,5 +1,5 @@
 // Externals
-import classNames from "classnames";
+import classnames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -21,7 +21,7 @@ const Navigation = (props: Props) => {
 	const current = router.route;
 
 	const navItemClasses = (url: string) =>
-		classNames(classes.nav__item, {
+		classnames(classes.nav__item, {
 			["nav__item--current"]: current === url,
 		});
 
