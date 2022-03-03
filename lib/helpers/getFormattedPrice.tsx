@@ -12,8 +12,6 @@ const FormattedPrice = (props: ValueProp) => {
 	const { value } = props;
 	const price = getFormattedPrice(value);
 
-	console.log("price", price);
-
 	return <>{price}</>;
 };
 
