@@ -8,6 +8,7 @@ import { Product } from "../../templates/interfaces";
 
 import classes from "./single-product.module.scss";
 import productsListHandler from "../api/products";
+import PageHead from "@components/header/PageHead";
 
 type Props = {
 	product: Product;
@@ -42,6 +43,8 @@ const SingleProduct = (props: Props) => {
 
 	return (
 		<>
+			<PageHead title={`${product.name} | Party Store`} />
+
 			<main className="container p-t-lg p-b-lg">
 				<article className={`cell single-product`}>
 					<section className="cell d-flex margin-x">
