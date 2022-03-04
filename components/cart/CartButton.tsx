@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import useCartState from "lib/hooks/useCartState";
 
 type Props = {
-	onClear: () => void;
+	onClear?: () => void;
 };
 
 export const ClearCartButton = (props: Props) => {
@@ -22,7 +22,7 @@ export const ClearCartButton = (props: Props) => {
 	const router = useRouter();
 
 	const onClearCart = () => {
-		onClear();
+		onClear ? onClear() : null;
 		router.reload();
 
 		dispatch(cartActions.clearCart(null));
