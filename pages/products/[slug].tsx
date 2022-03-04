@@ -2,13 +2,12 @@ import Image from "next/image";
 
 import Typography from "@material-ui/core/Typography";
 
-import AddToCart from "../../components/cart/AddToCart";
-
 import { Product } from "../../templates/interfaces";
-
-import classes from "./single-product.module.scss";
 import productsListHandler from "../api/products";
+
 import PageHead from "@components/header/PageHead";
+import AddToCart from "../../components/cart/AddToCart";
+import classes from "./single-product.module.scss";
 
 type Props = {
 	product: Product;
@@ -50,8 +49,10 @@ const SingleProduct = (props: Props) => {
 					<section className="cell d-flex margin-x">
 						<div className="cell mob-12 tab-6">
 							<h1>{product.name}</h1>
+
 							<ul
 								className={`d-flex no-bullet single-product__categories ${classes.pills}`}
+								aria-label="List of assigned categories for this product"
 							>
 								{product.categories &&
 									product.categories.map((cat) => {
