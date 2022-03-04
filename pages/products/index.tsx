@@ -1,6 +1,4 @@
 import { FormEvent, useEffect, useState } from "react";
-import { useFetchProductsQuery } from "../../store/products/product-slice";
-// import categories from "../../lib/data/categories.json";
 
 import Typography from "@material-ui/core/Typography";
 
@@ -20,11 +18,6 @@ const ProductsPage = (props: Props) => {
 	const { products } = props;
 	const [filters, setFilters] = useState<string[]>([]);
 	const [displayProducts, setDisplayProducts] = useState<Product[]>(products);
-	// const [productsReady, setProductsReady] = useState<boolean>(false);
-
-	// Get Products via redux
-	// const products = useFetchProductsQuery();
-	// const { isError, isSuccess, isLoading, data } = products;
 
 	const onChangeFilters = (e: FormEvent<HTMLInputElement>, cat: string) => {
 		let prevFilters = filters.slice();
