@@ -12,7 +12,7 @@ const CartDisplay = (props: Props) => {
 
 	return (
 		<div
-			className={`${classes["cart-table"]} margin-x ${
+			className={`${classes["cart-table"]} padding-x ${
 				isCompact ? classes["compact-view"] : null
 			}`}
 		>
