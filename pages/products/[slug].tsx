@@ -65,7 +65,7 @@ const SingleProduct = (props: Props) => {
 
 							{productDescription}
 
-							<AddToCart />
+							<AddToCart product={product} />
 						</div>
 						<div className="cell mob-12 tab-6">
 							<Image
