@@ -43,7 +43,7 @@ const SingleProduct = (props: Props) => {
 								product.description
 									.split(`\\nl`)
 									.map((para) => (
-										<Typography paragraph>
+										<Typography paragraph key={para}>
 											{para}
 										</Typography>
 									))
