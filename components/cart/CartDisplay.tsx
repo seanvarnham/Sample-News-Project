@@ -46,7 +46,11 @@ const CartDisplay = (props: Props) => {
 								{item.quantity}
 							</div>
 							<div className="mob-2 text-align-right">
-								<FormattedPrice value={item.value} />
+								{!isCompact ? (
+									<FormattedPrice value={item.value || 0} />
+								) : (
+									`£${item.value}`
+								)}
 							</div>
 						</div>
 					);
