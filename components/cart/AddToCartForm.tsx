@@ -33,6 +33,6 @@ const AddForm = forwardRef((props: Props, ref: Ref<HTMLInputElement>) => {
 	);
 });
 
-let AddToCartForm = AddForm;
-AddToCartForm.displayName = "AddToCartForm";
+AddForm.displayName = "AddForm";
+const AddToCartForm = AddForm;
 export default AddToCartForm;
