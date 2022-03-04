@@ -16,6 +16,11 @@ export interface CartState {
 	totalQuantity: number;
 }
 
+export interface ColorScheme {
+	mode: string;
+	isDarkMode: boolean;
+}
+
 export interface Product {
 	id: number;
 	name: string;
@@ -35,5 +40,6 @@ export type Products = Product[];
 
 export interface ReducerMap {
 	cart: CartState;
+	colorScheme: ColorScheme;
 	products?: Product[];
 }
