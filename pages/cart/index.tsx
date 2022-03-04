@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { ReducerMap } from "../../templates/interfaces";
 
 // MUI
-import { Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 // Internals
 import PageHead from "../../components/header/PageHead";
@@ -49,12 +49,27 @@ const Cart = (props: Props) => {
 						{content}
 
 						{cartState.totalQuantity > 0 && (
-							<div className="d-flex align-right cell p-t-sm">
-								<ClearCartButton
-									onClear={() => {
-										return null;
-									}}
-								/>
+							<div className="d-flex align-right margin-x p-t-sm">
+								<div className="cell shrink">
+									<ClearCartButton
+										onClear={() => {
+											return null;
+										}}
+									/>
+								</div>
+								<div className="cell shrink">
+									<Button
+										variant="contained"
+										color="secondary"
+										onClick={() =>
+											window.alert(
+												"Sorry, no can do... yet."
+											)
+										}
+									>
+										Proceed to checkout
+									</Button>
+								</div>
 							</div>
 						)}
 					</section>
