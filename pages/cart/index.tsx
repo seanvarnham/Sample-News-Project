@@ -1,6 +1,4 @@
 // Externals & Interfaces
-import { useSelector } from "react-redux";
-import { ReducerMap } from "../../templates/interfaces";
 
 // MUI
 import { Button, Typography } from "@material-ui/core";
