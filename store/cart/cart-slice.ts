@@ -26,8 +26,6 @@ export const cartSlice = createSlice({
 				let prevCartData;
 				if (previousCart) {
 					prevCartData = JSON.parse(previousCart);
-					console.log("prevCartData", prevCartData);
-
 					state.items = prevCartData.items;
 					state.totalValue = prevCartData.totalValue;
 					state.totalQuantity = prevCartData.totalQuantity;
@@ -70,6 +68,7 @@ export const cartSlice = createSlice({
 				localStorage.setItem("cart", JSON.stringify(storeLocally));
 			}
 		},
+
 		removeFromCart(state, action) {
 			// console.log("removeFromCart state", state);
 			const id = action.payload;
