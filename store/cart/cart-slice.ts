@@ -42,7 +42,6 @@ export const cartSlice = createSlice({
 			if (!existingItem) {
 				state.items.push(newItem);
 			} else {
-				// console.log("existingItem", existingItem);
 				existingItem.quantity =
 					existingItem.quantity + newItem.quantity;
 				existingItem.value = existingItem.value + newItem.value;
@@ -88,5 +87,6 @@ export const cartSlice = createSlice({
 	},
 });
 
+export const { clearCart, addToCart, removeFromCart } = cartSlice.actions;
 export const cartActions = cartSlice.actions;
 export default cartSlice.reducer;

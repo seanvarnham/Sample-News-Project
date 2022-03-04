@@ -4,7 +4,7 @@ import { MouseEvent } from "react";
 import Button from "@material-ui/core/Button";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 import { useDispatch } from "react-redux";
-import { cartActions } from "store/cart/cart-slice";
+import { addToCart } from "store/cart/cart-slice";
 import { CartItem, Product } from "templates/interfaces";
 
 type Props = {
@@ -14,12 +14,10 @@ type Props = {
 const AddToCart = (props: Props) => {
 	const { product: item } = props;
 	const dispatch = useDispatch();
-	// const cart = useSelector((state: ReducerMap) => state.cart);
 
 	const onClickCartButton = (e: MouseEvent) => {
 		e.preventDefault();
 
-		console.log("item", item);
 		const usePrice = item.onSale
 			? item.price.salePrice
 			: item.price.stdPrice;
@@ -30,7 +28,7 @@ const AddToCart = (props: Props) => {
 			value: usePrice,
 			quantity: 1,
 		};
-		dispatch(cartActions.addToCart(prodData));
+		dispatch(addToCart(prodData));
 	};
 
 	return (

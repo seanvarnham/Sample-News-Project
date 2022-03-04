@@ -1,15 +1,22 @@
+//
 import { MouseEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
+//
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+
+//
+import Link from "next/link";
+import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Popover from "@material-ui/core/Popover";
+import Typography from "@material-ui/core/Typography";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
-import { Paper, Popover, Typography } from "@material-ui/core";
+//
 import CartDisplay from "./CartDisplay";
-import Link from "next/link";
-import { cartActions, initialState } from "../../store/cart/cart-slice";
-import { useRouter } from "next/router";
 import useCartState from "lib/hooks/useCartState";
+import { clearCart, initialState } from "../../store/cart/cart-slice";
 
 type Props = {
 	onClear?: () => void;
@@ -25,7 +32,7 @@ export const ClearCartButton = (props: Props) => {
 		onClear ? onClear() : null;
 		router.reload();
 
-		dispatch(cartActions.clearCart(null));
+		dispatch(clearCart(null));
 
 		if (typeof window !== "undefined") {
 			localStorage.setItem("cart", JSON.stringify(initialState));

@@ -1,13 +1,12 @@
-// Externals & Interfaces
-import {
-	FormEvent,
-	// useRef,
-	// useState,
-	// forwardRef,
-	createRef,
-} from "react";
+// React
+import { FormEvent, createRef } from "react";
+
+// Redux
 import { useDispatch } from "react-redux";
-import { CartItem, Product } from "../../../../templates/interfaces";
+import { addToCart, cartActions } from "../../../../store/cart/cart-slice";
+
+// Next
+import Link from "next/link";
 
 // MUI
 import Typography from "@material-ui/core/Typography";
@@ -16,9 +15,8 @@ import Image from "next/image";
 // Internals
 import classes from "./ProductArticle.module.scss";
 import AddToCartForm from "../../../cart/AddToCartForm";
-import { cartActions } from "../../../../store/cart/cart-slice";
 import FormattedPrice from "../../../../lib/helpers/getFormattedPrice";
-import Link from "next/link";
+import { CartItem, Product } from "../../../../templates/interfaces";
 
 type Props = {
 	article: Product;
@@ -98,7 +96,7 @@ const ProductArticle = (props: Props) => {
 		};
 		e.preventDefault();
 
-		dispatch(cartActions.addToCart(prodData));
+		dispatch(addToCart(prodData));
 	};
 
 	return (
