@@ -16,6 +16,30 @@ type Props = {
 const SingleProduct = (props: Props) => {
 	const { product } = props;
 
+	let productDescription;
+	if (product.description) {
+		productDescription = product.description.split(`\\nl`).map((para) => (
+			<Typography paragraph key={para}>
+				{para}
+			</Typography>
+		));
+	} else {
+		productDescription = (
+			<>
+				<Typography
+					variant="subtitle1"
+					variantMapping={{ subtitle1: "p" }}
+					className="p-b-md"
+				>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet id ipsum nec placerat.`}</Typography>
+				<Typography
+					variant="subtitle1"
+					variantMapping={{ subtitle1: "p" }}
+					className="p-b-md"
+				>{`Proin luctus pharetra pharetra. Morbi laoreet sagittis odio sit amet tempus. Nam congue auctor viverra. Mauris faucibus magna ut justo consequat, in vehicula diam dapibus.`}</Typography>
+			</>
+		);
+	}
+
 	return (
 		<>
 			<main className="container p-t-lg p-b-lg">
@@ -39,28 +63,7 @@ const SingleProduct = (props: Props) => {
 									})}
 							</ul>
 
-							{product.description ? (
-								product.description
-									.split(`\\nl`)
-									.map((para) => (
-										<Typography paragraph key={para}>
-											{para}
-										</Typography>
-									))
-							) : (
-								<>
-									<Typography
-										variant="subtitle1"
-										variantMapping={{ subtitle1: "p" }}
-										className="p-b-md"
-									>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet id ipsum nec placerat.`}</Typography>
-									<Typography
-										variant="subtitle1"
-										variantMapping={{ subtitle1: "p" }}
-										className="p-b-md"
-									>{`Proin luctus pharetra pharetra. Morbi laoreet sagittis odio sit amet tempus. Nam congue auctor viverra. Mauris faucibus magna ut justo consequat, in vehicula diam dapibus.`}</Typography>
-								</>
-							)}
+							{productDescription}
 
 							<AddToCart />
 						</div>
