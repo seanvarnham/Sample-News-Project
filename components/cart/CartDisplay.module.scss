@@ -6,6 +6,10 @@
 	border-radius: rem-calc(6);
 	padding: rem-calc(10);
 
+	&.is-compact-table {
+		padding: 0;
+	}
+
 	&__header {
 		border-bottom: rem-calc(1) solid $dark-goldenrod;
 	}

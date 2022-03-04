@@ -15,7 +15,7 @@ const CartDisplay = (props: Props) => {
 		[classes["compact-view"]]: isCompact,
 		[`padding-x`]: !isCompact,
 		[`margin-x`]: isCompact,
-		[`is-compact-table`]: isCompact,
+		[classes[`is-compact-table`]]: isCompact,
 	});
 
 	return (
