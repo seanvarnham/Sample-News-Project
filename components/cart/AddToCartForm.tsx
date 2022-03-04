@@ -11,7 +11,7 @@ type Props = {
 	item: Product;
 };
 
-const AddForm = (props: Props, ref: Ref<HTMLInputElement>) => {
+const AddForm = forwardRef((props: Props, ref: Ref<HTMLInputElement>) => {
 	const { onAddToCart, item } = props;
 
 	return (
@@ -31,7 +31,6 @@ const AddForm = (props: Props, ref: Ref<HTMLInputElement>) => {
 			</div>
 		</form>
 	);
-};
-const AddToCartForm = forwardRef(AddForm);
-
+});
+const AddToCartForm = AddForm;
 export default AddToCartForm;
