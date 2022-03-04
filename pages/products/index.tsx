@@ -68,7 +68,7 @@ const ProductsPage = (props: Props) => {
 							variant="h4"
 							variantMapping={{ h4: "h1" }}
 						>
-							Products
+							{`Products`}
 						</Typography>
 
 						<section className="d-flex margin-x">

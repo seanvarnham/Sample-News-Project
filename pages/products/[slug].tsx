@@ -15,7 +15,6 @@ type Props = {
 
 const SingleProduct = (props: Props) => {
 	const { product } = props;
-	// console.log("product", product);
 
 	return (
 		<>
@@ -40,16 +39,28 @@ const SingleProduct = (props: Props) => {
 									})}
 							</ul>
 
-							<Typography
-								variant="subtitle1"
-								variantMapping={{ subtitle1: "p" }}
-								className="p-b-md"
-							>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet id ipsum nec placerat.`}</Typography>
-							<Typography
-								variant="subtitle1"
-								variantMapping={{ subtitle1: "p" }}
-								className="p-b-md"
-							>{`Proin luctus pharetra pharetra. Morbi laoreet sagittis odio sit amet tempus. Nam congue auctor viverra. Mauris faucibus magna ut justo consequat, in vehicula diam dapibus.`}</Typography>
+							{product.description ? (
+								product.description
+									.split(`\\nl`)
+									.map((para) => (
+										<Typography paragraph>
+											{para}
+										</Typography>
+									))
+							) : (
+								<>
+									<Typography
+										variant="subtitle1"
+										variantMapping={{ subtitle1: "p" }}
+										className="p-b-md"
+									>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet id ipsum nec placerat.`}</Typography>
+									<Typography
+										variant="subtitle1"
+										variantMapping={{ subtitle1: "p" }}
+										className="p-b-md"
+									>{`Proin luctus pharetra pharetra. Morbi laoreet sagittis odio sit amet tempus. Nam congue auctor viverra. Mauris faucibus magna ut justo consequat, in vehicula diam dapibus.`}</Typography>
+								</>
+							)}
 
 							<AddToCart />
 						</div>
