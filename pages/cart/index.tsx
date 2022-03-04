@@ -9,6 +9,7 @@ import { Typography } from "@material-ui/core";
 import PageHead from "../../components/header/PageHead";
 import CartDisplay from "../../components/cart/CartDisplay";
 import useCartState from "lib/hooks/useCartState";
+import { ClearCartButton } from "@components/cart/CartButton";
 
 type Props = {};
 
@@ -46,6 +47,16 @@ const Cart = (props: Props) => {
 							Your cart
 						</Typography>
 						{content}
+
+						{cartState.totalQuantity > 0 && (
+							<div className="d-flex align-right cell p-t-sm">
+								<ClearCartButton
+									onClear={() => {
+										return null;
+									}}
+								/>
+							</div>
+						)}
 					</section>
 
 					{/* <section>{cartState.totalQuantity > 0 && <></>}</section> */}

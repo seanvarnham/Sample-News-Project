@@ -1,6 +1,7 @@
 import useCartState from "../../lib/hooks/useCartState";
 import FormattedPrice from "../../lib/helpers/getFormattedPrice";
 import classes from "./CartDisplay.module.scss";
+import classNames from "classnames";
 
 type Props = {
 	isCompact?: boolean;
@@ -10,12 +11,15 @@ const CartDisplay = (props: Props) => {
 	const { isCompact } = props;
 	const cartState = useCartState();
 
+	const tableClasses = classNames(`${classes["cart-table"]}`, {
+		[classes["compact-view"]]: isCompact,
+		[`padding-x`]: !isCompact,
+		[`margin-x`]: isCompact,
+		[`is-compact-table`]: isCompact,
+	});
+
 	return (
-		<div
-			className={`${classes["cart-table"]} padding-x ${
-				isCompact ? classes["compact-view"] : null
-			}`}
-		>
+		<div className={tableClasses}>
 			<div
 				className={`${classes["cart-table__header"]} cell d-flex p-b-sm m-b-md`}
 			>

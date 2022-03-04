@@ -4,30 +4,43 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
-import { ReducerMap } from "../../templates/interfaces";
 import { Paper, Popover, Typography } from "@material-ui/core";
 import CartDisplay from "./CartDisplay";
 import Link from "next/link";
 import { cartActions, initialState } from "../../store/cart/cart-slice";
 import { useRouter } from "next/router";
+import useCartState from "lib/hooks/useCartState";
 
-type Props = {};
+type Props = {
+	onClear: () => void;
+};
 
-const CartButton = (props: Props) => {
+export const ClearCartButton = (props: Props) => {
+	const { onClear } = props;
+
 	const dispatch = useDispatch();
 	const router = useRouter();
 
-	const cart = useSelector((state: ReducerMap) => state.cart);
-	let cartState = cart;
-	let localCart;
+	const onClearCart = () => {
+		onClear();
+		router.reload();
 
-	if (typeof window !== "undefined") {
-		localCart = localStorage.getItem("cart");
+		dispatch(cartActions.clearCart(null));
 
-		if (localCart) {
-			cartState = JSON.parse(localCart);
+		if (typeof window !== "undefined") {
+			localStorage.setItem("cart", JSON.stringify(initialState));
 		}
-	}
+	};
+
+	return (
+		<Button color="secondary" variant="text" onClick={onClearCart}>
+			Empty Cart
+		</Button>
+	);
+};
+
+const CartButton = (props: Props) => {
+	const cartState = useCartState();
 
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const onClickCartButton = (e: MouseEvent<HTMLButtonElement>) => {
@@ -40,17 +53,6 @@ const CartButton = (props: Props) => {
 
 	const open = Boolean(anchorEl);
 	const id = open ? "cartPopover" : undefined;
-
-	const onClearCart = () => {
-		onCloseCartButton();
-		router.reload();
-
-		dispatch(cartActions.clearCart(null));
-
-		if (typeof window !== "undefined") {
-			localStorage.setItem("cart", JSON.stringify(initialState));
-		}
-	};
 
 	return (
 		<>
@@ -87,13 +89,9 @@ const CartButton = (props: Props) => {
 								</div>
 
 								<div className="cell p-t-md d-flex align-justify">
-									<Button
-										color="secondary"
-										variant="text"
-										onClick={onClearCart}
-									>
-										Empty Cart
-									</Button>
+									<ClearCartButton
+										onClear={onCloseCartButton}
+									/>
 
 									<Link href="/cart" passHref>
 										<Button
