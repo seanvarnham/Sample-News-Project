@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { CartItem, CartState } from "../../templates/interfaces";
 
 export const initialState: CartState = {
@@ -18,6 +18,7 @@ export const cartSlice = createSlice({
 				localStorage.setItem("cart", JSON.stringify(initialState));
 			}
 		},
+
 		addToCart(state, action) {
 			if (typeof window !== "undefined") {
 				const previousCart = localStorage.getItem("cart");
