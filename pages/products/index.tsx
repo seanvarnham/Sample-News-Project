@@ -9,6 +9,7 @@ import { Product, Products } from "../../templates/interfaces";
 import ProductFilters from "../../components/Products/ProductFilters";
 import productsListHandler from "../api/products";
 import PageHead from "../../components/header/PageHead";
+import { generateUniqueId } from "lib/helpers/uniqueId";
 
 type Props = {
 	products: Products;
@@ -49,6 +50,7 @@ const ProductsPage = (props: Props) => {
 		}
 	}, [filters, products]);
 
+	const _uid = generateUniqueId();
 	return (
 		<>
 			<PageHead title={"Products | Party Store"} />
@@ -77,8 +79,12 @@ const ProductsPage = (props: Props) => {
 						</section>
 					</main>
 
-					<aside className="order-1 cell mob-12 tab-3 desk-2">
+					<aside
+						className="order-1 cell mob-12 tab-3 desk-2"
+						aria-labelledby={_uid || undefined}
+					>
 						<ProductFilters
+							headingId={_uid}
 							onChangeFilters={onChangeFilters}
 							filters={filters}
 						/>
