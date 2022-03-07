@@ -1,8 +1,20 @@
-import reducer, { initialState, addToCart } from "store/cart/cart-slice";
+import reducer, {
+	initialState,
+	addToCart,
+	clearCart,
+} from "store/cart/cart-slice";
 
 describe("Redux Cart Tests", () => {
 	it("should return the initial state", () => {
 		expect(reducer(undefined, initialState)).toEqual({
+			items: [],
+			totalValue: 0,
+			totalQuantity: 0,
+		});
+	});
+
+	it("should return the initial state on clear cart", () => {
+		expect(reducer(initialState, clearCart)).toEqual({
 			items: [],
 			totalValue: 0,
 			totalQuantity: 0,
