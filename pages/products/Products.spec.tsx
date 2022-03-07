@@ -2,7 +2,7 @@ import { render, screen } from "../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import ProductsPage from ".";
 
-describe("Products Page basics", () => {
+describe("Products Page", () => {
 	it("should render the product page H1 heading", () => {
 		render(<ProductsPage products={[]} />);
 		const heading = screen.getByRole("heading", { level: 1 });
@@ -15,8 +15,13 @@ describe("Products Page basics", () => {
 		const heading = screen.getByRole("heading", { level: 1 });
 		expect(heading).toHaveTextContent("Products");
 	});
-});
-describe("Products Page", () => {
+
+	it("should render sidebar checkboxes", () => {
+		render(<ProductsPage products={[]} />);
+		const accessories = screen.getByLabelText(/accessories/i);
+		expect(accessories).toBeInTheDocument();
+	});
+
 	it("should render the sidebar for filters", () => {
 		render(<ProductsPage products={[]} />);
 
