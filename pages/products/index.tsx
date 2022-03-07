@@ -55,14 +55,7 @@ const ProductsPage = (props: Props) => {
 
 			<div className="container">
 				<div className="d-flex margin-x p-t-lg p-b-lg">
-					<aside className="cell mob-12 tab-3 desk-2">
-						<ProductFilters
-							onChangeFilters={onChangeFilters}
-							filters={filters}
-						/>
-					</aside>
-
-					<main className="cell mob-12 tab-9 desk-10">
+					<main className="order-2 cell mob-12 tab-9 desk-10">
 						<Typography
 							gutterBottom
 							variant="h4"
@@ -83,6 +76,13 @@ const ProductsPage = (props: Props) => {
 								})}
 						</section>
 					</main>
+
+					<aside className="order-1 cell mob-12 tab-3 desk-2">
+						<ProductFilters
+							onChangeFilters={onChangeFilters}
+							filters={filters}
+						/>
+					</aside>
 				</div>
 			</div>
 		</>

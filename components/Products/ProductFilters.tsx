@@ -18,7 +18,7 @@ const ProductFilters = (props: Props) => {
 	return (
 		<>
 			<div className="cell p-b-md">
-				<Typography variant="h5" variantMapping={{ h5: "h1" }}>
+				<Typography variant="h5" variantMapping={{ h5: "h2" }}>
 					{`Filter by`}
 				</Typography>
 			</div>

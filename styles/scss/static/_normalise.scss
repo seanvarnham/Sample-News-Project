@@ -195,3 +195,9 @@ template {
 	visibility: hidden;
 	opacity: 0;
 }
+
+@for $i from 0 through 8 {
+	.order-#{$i} {
+		order: $i;
+	}
+}
