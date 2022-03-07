@@ -18,10 +18,10 @@ jest.mock("next/router", () => ({
 	},
 }));
 
-describe("Products Page", () => {
+describe("Header Component", () => {
 	const { container } = render(<Header />);
 
-	it("should first", () => {
+	it("should render the navigation", () => {
 		expect(screen.getByRole("navigation")).toBeInTheDocument();
 	});
 });
