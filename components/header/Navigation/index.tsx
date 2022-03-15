@@ -4,18 +4,17 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 // Internals
-import nav from "../../lib/data/nav-menu.json";
-import { NavItem } from "../../templates/interfaces";
+import nav from "../../../lib/data/nav-menu.json";
+import { NavItem } from "../../../templates/interfaces";
 
 // Styles
 import classes from "./Navigation.module.scss";
 
-type Props = {
+interface INavigationProps {
 	label: string;
-};
+}
 
-const Navigation = (props: Props) => {
-	const { label } = props;
+const Navigation = ({ label }: INavigationProps) => {
 	const router = useRouter();
 
 	const current = router.route;
