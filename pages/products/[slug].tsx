@@ -7,7 +7,7 @@ import productsListHandler from "../api/products";
 
 import PageHead from "@components/header/PageHead";
 import AddToCart from "../../components/cart/AddToCart";
-import classes from "./single-product.module.scss";
+import classes from "../../styles/pages/products/single-product.module.scss";
 
 type Props = {
 	product: Product;

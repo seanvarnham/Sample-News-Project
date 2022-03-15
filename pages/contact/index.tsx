@@ -1,5 +1,5 @@
 import PageHead from "../../components/header/PageHead";
-import classes from "./contact.module.scss";
+import classes from "../../styles/pages/contact/contact.module.scss";
 
 type Props = {};
 
