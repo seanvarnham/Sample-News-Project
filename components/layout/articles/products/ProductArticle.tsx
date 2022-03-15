@@ -3,7 +3,7 @@ import { FormEvent, createRef } from "react";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { addToCart, cartActions } from "../../../../store/cart/cart-slice";
+import { addToCart } from "../../../../store/cart/cart-slice";
 
 // Next
 import Link from "next/link";
@@ -15,64 +15,14 @@ import Image from "next/image";
 // Internals
 import classes from "./ProductArticle.module.scss";
 import AddToCartForm from "../../../cart/AddToCartForm";
-import FormattedPrice from "../../../../lib/helpers/getFormattedPrice";
 import { CartItem, Product } from "../../../../templates/interfaces";
+import { ProductPrice } from "@components/Products/Price";
 
-type Props = {
+interface IProductArticleProps {
 	article: Product;
-};
+}
 
-type ProductPriceProps = Product;
-
-const ProductPrice = (props: ProductPriceProps) => {
-	const {
-		onSale,
-		price: { salePrice, stdPrice },
-	} = props;
-
-	let priceFormat = <></>;
-
-	if (!onSale) {
-		priceFormat = (
-			<div className={classes.product__price}>
-				<Typography
-					gutterBottom
-					variant="h6"
-					variantMapping={{ h6: "p" }}
-				>
-					<FormattedPrice value={+stdPrice} />
-				</Typography>
-			</div>
-		);
-	}
-
-	if (onSale) {
-		priceFormat = (
-			<>
-				<span className="d-flex align-center">
-					<Typography variant="h6" variantMapping={{ h6: "p" }}>
-						<FormattedPrice value={+salePrice} />
-					</Typography>
-
-					<Typography
-						className={`${classes.product__price} ${classes["--prev"]}`}
-						variant="body2"
-						variantMapping={{ body2: "p" }}
-					>
-						<s>
-							<FormattedPrice value={+stdPrice} />
-						</s>
-					</Typography>
-				</span>
-			</>
-		);
-	}
-
-	return <>{priceFormat}</>;
-};
-
-const ProductArticle = (props: Props) => {
-	const { article: item } = props;
+const ProductArticle = ({ article: item }: IProductArticleProps) => {
 	const inputRef = createRef<HTMLInputElement>();
 	const dispatch = useDispatch();
 
@@ -126,7 +76,7 @@ const ProductArticle = (props: Props) => {
 						{item.name}
 					</Typography>
 
-					<ProductPrice {...item} />
+					<ProductPrice article={item} />
 				</div>
 				<div
 					className={`cell align-self-bottom ${classes.product__footer}`}

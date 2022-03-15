@@ -1,0 +1,10 @@
+@import "../../../styles//scss/helpers";
+
+.product {
+	&__price {
+		&.--prev {
+			padding-left: rem-calc(5);
+			color: red;
+		}
+	}
+}

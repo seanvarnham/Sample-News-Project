@@ -5,7 +5,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 import { FormEvent } from "react";
-import categories from "../../lib/data/categories.json";
+import categories from "../../../lib/data/categories.json";
 import classes from "./Products.module.scss";
 
 type Props = {
