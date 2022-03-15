@@ -7,12 +7,11 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "store/cart/cart-slice";
 import { CartItem, Product } from "templates/interfaces";
 
-type Props = {
+interface IAddToCartProps {
 	product: Product;
-};
+}
 
-const AddToCart = (props: Props) => {
-	const { product: item } = props;
+const AddToCart = ({ product: item }: IAddToCartProps) => {
 	const dispatch = useDispatch();
 
 	const onClickCartButton = (e: MouseEvent) => {
@@ -38,7 +37,6 @@ const AddToCart = (props: Props) => {
 			onClick={onClickCartButton}
 		>
 			<AddShoppingCart />
-			Add
 		</Button>
 	);
 };

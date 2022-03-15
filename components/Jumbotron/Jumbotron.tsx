@@ -3,24 +3,24 @@ import { ElementType, ReactNode } from "react";
 
 //
 import { PictureTag } from "../../templates/interfaces/image-interfaces";
-import CustomTag from "../layout/CustomTag";
+import CustomTag from "../layout/Custom";
 
 //
 import compClasses from "./Jumbotron.module.scss";
 
-type Props = {
+interface IJumbotronProps {
 	children?: ReactNode;
 	classes: string;
 	tagName: ElementType;
 	source: PictureTag;
-};
+}
 
-const Jumbotron = (props: Props) => {
-	const {
-		classes,
-		tagName,
-		source: { mob, tab, desk },
-	} = props;
+const Jumbotron = ({
+	children,
+	classes,
+	tagName,
+	source: { mob, tab, desk },
+}: IJumbotronProps) => {
 	// console.log("Jumbotron props", props);
 
 	if (!desk) {
@@ -55,7 +55,7 @@ const Jumbotron = (props: Props) => {
 				/>
 			</picture>
 
-			<div className="container">{props.children} </div>
+			<div className="container">{children}</div>
 		</CustomTag>
 	);
 };

@@ -3,11 +3,11 @@ import FormattedPrice from "../../lib/helpers/getFormattedPrice";
 import classes from "./CartDisplay.module.scss";
 import classNames from "classnames";
 
-type Props = {
+interface ICartDisplayProps {
 	isCompact?: boolean;
-};
+}
 
-const CartDisplay = (props: Props) => {
+const CartDisplay = (props: ICartDisplayProps) => {
 	const { isCompact } = props;
 	const cartState = useCartState();
 

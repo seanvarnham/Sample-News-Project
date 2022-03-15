@@ -6,32 +6,32 @@ import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 import { Product } from "../../templates/interfaces";
 
-type Props = {
+interface IAddFormProps {
 	onAddToCart: (e: FormEvent<HTMLElement>) => void;
 	item: Product;
-};
+}
 
-const AddForm = forwardRef((props: Props, ref: Ref<HTMLInputElement>) => {
-	const { onAddToCart, item } = props;
-
-	return (
-		<form onSubmit={onAddToCart} className="d-flex margin-x">
-			<div className="cell mob-3">
-				<Input
-					inputRef={ref}
-					id={item.name}
-					type="number"
-					placeholder="0"
-				/>
-			</div>
-			<div className="cell auto d-flex align-right">
-				<Button type="submit" color="secondary" variant="outlined">
-					<AddShoppingCart />
-				</Button>
-			</div>
-		</form>
-	);
-});
+const AddForm = forwardRef(
+	({ onAddToCart, item }: IAddFormProps, ref: Ref<HTMLInputElement>) => {
+		return (
+			<form onSubmit={onAddToCart} className="d-flex margin-x">
+				<div className="cell mob-3">
+					<Input
+						inputRef={ref}
+						id={item.name}
+						type="number"
+						placeholder="0"
+					/>
+				</div>
+				<div className="cell auto d-flex align-right">
+					<Button type="submit" color="secondary" variant="outlined">
+						<AddShoppingCart />
+					</Button>
+				</div>
+			</form>
+		);
+	}
+);
 
 AddForm.displayName = "AddForm";
 const AddToCartForm = AddForm;

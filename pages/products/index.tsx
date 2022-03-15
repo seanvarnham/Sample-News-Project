@@ -2,20 +2,20 @@ import { FormEvent, useEffect, useState } from "react";
 
 import Typography from "@material-ui/core/Typography";
 
-import ProductArticle from "../../components/layout/articles/products/ProductArticle";
+import ProductArticle from "../../components/layout/articles/products";
 
 import { Product, Products } from "../../templates/interfaces";
 
-import ProductFilters from "../../components/Products/ProductFilters";
+import { ProductFilters } from "../../components/Products";
 import productsListHandler from "../api/products";
 import PageHead from "../../components/header/PageHead";
 import { generateUniqueId } from "lib/helpers/uniqueId";
 
-type Props = {
+interface IProductsPageProps {
 	products: Products;
-};
+}
 
-const ProductsPage = (props: Props) => {
+const ProductsPage = (props: IProductsPageProps) => {
 	const { products } = props;
 	const [filters, setFilters] = useState<string[]>([]);
 	const [displayProducts, setDisplayProducts] = useState<Product[]>(products);
