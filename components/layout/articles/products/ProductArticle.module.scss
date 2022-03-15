@@ -41,13 +41,6 @@
 		box-shadow: rem-calc(0 10 10 -5) $lightest-grey;
 	}
 
-	&__price {
-		&.--prev {
-			padding-left: rem-calc(5);
-			color: red;
-		}
-	}
-
 	&__content,
 	&__footer {
 		padding: rem-calc(15);
