@@ -1,12 +1,11 @@
 import Head from "next/head";
 
-type Props = {
+interface IPageHeadProps {
 	title: string | undefined;
 	description?: string | undefined;
-};
+}
 
-const PageHead = (props: Props) => {
-	const { title, description } = props;
+const PageHead = ({ title, description }: IPageHeadProps) => {
 	return (
 		<Head>
 			<title>{title || "Sample App"}</title>
