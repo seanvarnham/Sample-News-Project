@@ -182,6 +182,7 @@
 	}
 	@return $list;
 }
+
 @function rem-calc($values, $elFontSize: 16) {
 	$list: ();
 
@@ -189,8 +190,8 @@
 		@if ($value == 0 or $value == auto) {
 			$list: append($list, $value);
 		} @else {
-			$emValue: ($value/$elFontSize) + rem;
-			$list: append($list, $emValue);
+			$remValue: ($value/$elFontSize) + rem;
+			$list: append($list, $remValue);
 		}
 	}
 	@return $list;
