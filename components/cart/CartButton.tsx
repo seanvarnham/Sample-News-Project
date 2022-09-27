@@ -3,10 +3,10 @@ import { MouseEvent, useState } from "react";
 
 //
 import Link from "next/link";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import Popover from "@material-ui/core/Popover";
-import Typography from "@material-ui/core/Typography";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 //

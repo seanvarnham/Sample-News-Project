@@ -1,5 +1,5 @@
 // Components
-import AppBar from "@material-ui/core/AppBar";
+import AppBar from "@mui/material/AppBar";
 import Link from "next/link";
 
 // Redux
@@ -21,7 +21,7 @@ const Header = (props: IHeaderProps) => {
 			<AppBar
 				color={"default"}
 				position="sticky"
-				variant="outlined"
+				elevation={2}
 				className={`p-t-sm p-b-sm`}
 			>
 				<div className="container">

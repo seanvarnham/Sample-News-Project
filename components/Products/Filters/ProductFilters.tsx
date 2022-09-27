@@ -3,7 +3,7 @@ import {
 	FormControlLabel,
 	FormGroup,
 	Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { FormEvent } from "react";
 import categories from "../../../lib/data/categories.json";
 import classes from "./Products.module.scss";

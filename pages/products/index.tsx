@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
 import ProductArticle from "../../components/layout/articles/products";
 
@@ -97,7 +97,7 @@ const ProductsPage = (props: IProductsPageProps) => {
 
 export default ProductsPage;
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps = async () => {
 	const res = await productsListHandler().then((data) => {
 		return data;
 	});
