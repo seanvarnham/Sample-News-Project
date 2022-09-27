@@ -1,9 +1,9 @@
 import PageHead from "../../components/header/PageHead";
 import classes from "../../styles/pages/contact/contact.module.scss";
 
-type Props = {};
+interface IContactProps {}
 
-const Contact = (props: Props) => {
+const Contact = (props: IContactProps) => {
 	return (
 		<>
 			<PageHead title={"Contact | Party Store"} />
