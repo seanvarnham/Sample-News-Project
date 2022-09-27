@@ -1,17 +1,16 @@
 // Externals & Interfaces
 
 // MUI
-import { Button, Typography } from "@material-ui/core";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 // Internals
 import PageHead from "../../components/header/PageHead";
 import CartDisplay from "../../components/cart/CartDisplay";
 import useCartState from "lib/hooks/useCartState";
-import { ClearCartButton } from "@components/cart/CartButton";
+import ClearCartButton from "@components/cart/Buttons/ClearCart";
 
-type Props = {};
-
-const Cart = (props: Props) => {
+const Cart = () => {
 	const cartState = useCartState();
 
 	let content;

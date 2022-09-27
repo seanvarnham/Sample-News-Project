@@ -1,5 +1,6 @@
 // Externals
-import { Paper } from "@material-ui/core";
+import { Paper } from "@mui/material";
+
 // import Link from "next/link";
 
 // Internals

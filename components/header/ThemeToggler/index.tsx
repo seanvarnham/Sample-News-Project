@@ -2,13 +2,14 @@
 import { ChangeEventHandler } from "react";
 
 //
-import { withStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Switch, { SwitchClassKey, SwitchProps } from "@material-ui/core/Switch";
+import theme from "../../../templates/mui/Theme";
+import Switch, { SwitchClassKey, SwitchProps } from "@mui/material/Switch";
 
 //
 import useThemeState from "lib/hooks/useThemeState";
 import { useDispatch } from "react-redux";
 import { colorActions } from "store/color/color-slice";
+import { createStyles, makeStyles, Theme, withStyles } from "@mui/material";
 
 //
 interface Styles extends Partial<Record<SwitchClassKey, string>> {
@@ -18,50 +19,46 @@ interface Props extends SwitchProps {
 	classes: Styles;
 }
 
-const Styles = (theme: Theme) => {
-	return createStyles({
-		root: {
-			width: 42,
-			height: 26,
-			padding: 0,
-			margin: theme.spacing(1),
-		},
-		switchBase: {
-			padding: 1,
-			"&$checked": {
-				transform: "translateX(16px)",
-				color: `var(--egyptian-blue)`,
-				"& + $track": {
-					backgroundColor: "#585858",
-					opacity: 1,
-					border: "none",
-				},
-			},
-			"&$focusVisible $thumb": {
-				color: "#585858",
-				border: "6px solid #fff",
+const useStyles = makeStyles((theme: Theme) => ({
+	root: {
+		width: 42,
+		height: 26,
+		padding: 0,
+		margin: theme.spacing(1),
+	},
+	switchBase: {
+		padding: 1,
+		"&$checked": {
+			transform: "translateX(16px)",
+			color: `var(--egyptian-blue)`,
+			"& + $track": {
+				backgroundColor: "#585858",
+				opacity: 1,
+				border: "none",
 			},
 		},
-		thumb: {
-			width: 24,
-			height: 24,
+		"&$focusVisible $thumb": {
+			color: "#585858",
+			border: "6px solid #fff",
 		},
-		track: {
-			borderRadius: 26 / 2,
-			border: `1px solid ${theme.palette.grey[400]}`,
-			backgroundColor: theme.palette.grey[50],
-			opacity: 1,
-			transition: theme.transitions.create([
-				"background-color",
-				"border",
-			]),
-		},
-		checked: {},
-	});
-};
+	},
+	thumb: {
+		width: 24,
+		height: 24,
+	},
+	track: {
+		borderRadius: 26 / 2,
+		border: `1px solid ${theme.palette.grey[400]}`,
+		backgroundColor: theme.palette.grey[50],
+		opacity: 1,
+		transition: theme.transitions.create(["background-color", "border"]),
+	},
+	checked: {},
+}));
 
 const ThemeToggle = (props: Props) => {
 	const { classes } = props;
+	// const classes = useStyles(theme);
 	const theme = useThemeState();
 	const dispatch = useDispatch();
 	const currentlyDark = theme.isDarkMode;
@@ -79,6 +76,7 @@ const ThemeToggle = (props: Props) => {
 	return (
 		<>
 			<Switch
+				{...props}
 				focusVisibleClassName={classes.focusVisible}
 				disableRipple
 				onChange={onToggleTheme}
@@ -89,10 +87,9 @@ const ThemeToggle = (props: Props) => {
 					track: classes.track,
 					checked: classes.checked,
 				}}
-				{...props}
 			/>
 		</>
 	);
 };
 
-export default withStyles(Styles)(ThemeToggle);
+export default ThemeToggle;

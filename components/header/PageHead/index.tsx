@@ -1,8 +1,8 @@
 import Head from "next/head";
 
 interface IPageHeadProps {
-	title: string | undefined;
-	description?: string | undefined;
+	title: string;
+	description?: string;
 }
 
 const PageHead = ({ title, description }: IPageHeadProps) => {

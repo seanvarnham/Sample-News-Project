@@ -1,7 +1,7 @@
 import { FormEvent, forwardRef, Ref } from "react";
 
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
+import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 import { Product } from "../../templates/interfaces";

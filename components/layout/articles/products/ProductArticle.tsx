@@ -9,7 +9,7 @@ import { addToCart } from "../../../../store/cart/cart-slice";
 import Link from "next/link";
 
 // MUI
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
 // Internals

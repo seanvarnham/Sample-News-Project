@@ -5,7 +5,7 @@
 // Next
 
 // MUI
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
 // Internals
 import { Product } from "templates/interfaces";

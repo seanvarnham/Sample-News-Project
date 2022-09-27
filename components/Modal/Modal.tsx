@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { ReducerMap } from "../../templates/interfaces";
 
-type Props = {};
+type IModalProps = {};
 
-const Modal = (props: Props) => {
+const Modal = (props: IModalProps) => {
 	const cart = useSelector((state: ReducerMap) => state.cart);
 
 	return (
