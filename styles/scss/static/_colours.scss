@@ -1,0 +1,17 @@
+$colours: "egyptian-blue" $egyptian-blue, "dark-goldenrod" $dark-goldenrod,
+	"gold-fusion" $gold-fusion, "field-drab" $field-drab, "jasmine" $jasmine,
+	"black" $black, "dark-grey" $dark-grey, "mid-grey" $mid-grey,
+	"light-grey" $light-grey, "lightest-grey" $lightest-grey, "white" $white;
+
+@each $name, $colour in $colours {
+	.has-#{$name}-color {
+		color: $colour;
+	}
+	.has-#{$name}-background-color {
+		background-color: $colour;
+
+		@if ($name == "egyptian-blue") {
+			color: $white;
+		}
+	}
+}

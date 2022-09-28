@@ -1,0 +1,51 @@
+@import "../../../../styles/scss/helpers.scss";
+
+.product {
+	margin-bottom: rem-calc(30);
+	border: rem-calc(1) solid $lightest-grey;
+	box-shadow: rem-calc(0 1 10 0) $lightest-grey;
+	border-radius: rem-calc(6);
+	overflow: hidden;
+	transition: all 0.4s ease;
+
+	img {
+		@include breakpoint(largeUp) {
+			transform: scale(1);
+			transition: all 0.8s ease;
+		}
+
+		&:hover {
+			@include breakpoint(largeUp) {
+				transform: scale(1.1);
+				cursor: pointer;
+			}
+		}
+	}
+
+	//
+	// transform: translateY(#{rem-calc(50)});
+	// opacity: 0;
+
+	// &.show {
+	// 	transform: translateY(0);
+	// 	opacity: 1;
+	// }
+
+	// &:nth-child(n + 7) {
+	// 	transform: translateY(#{rem-calc(50)});
+	// 	opacity: 0;
+	// }
+
+	&:hover,
+	&:focus-within {
+		box-shadow: rem-calc(0 10 10 -5) $lightest-grey;
+	}
+
+	&__content,
+	&__footer {
+		padding: rem-calc(15);
+	}
+
+	&__footer {
+	}
+}

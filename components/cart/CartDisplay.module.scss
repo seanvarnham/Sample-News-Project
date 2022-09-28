@@ -1,0 +1,38 @@
+@import "../../styles/scss/helpers.scss";
+
+.cart-table {
+	background-color: $off-white;
+	border: rem-calc(1) solid $lightest-grey;
+	border-radius: rem-calc(6);
+	padding: rem-calc(10);
+
+	&.is-compact-table {
+		padding: 0;
+	}
+
+	&__header {
+		border-bottom: rem-calc(1) solid $dark-goldenrod;
+	}
+	&--row {
+		padding: {
+			top: rem-calc(5);
+			bottom: rem-calc(5);
+		}
+		&:not(:last-of-type) {
+			border-bottom: rem-calc(1) solid $lightest-grey;
+		}
+	}
+
+	&__footer {
+		border: double;
+		border-width: rem-calc(5 0 0);
+		border-color: $dark-goldenrod;
+	}
+}
+
+.cart-table {
+	&.compact-view {
+		background-color: $white;
+		border: none;
+	}
+}

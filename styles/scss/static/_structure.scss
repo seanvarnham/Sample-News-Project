@@ -1,0 +1,23 @@
+$displays: block, inline, grid;
+@each $property in $displays {
+	.d-#{$property} {
+		display: $property;
+	}
+}
+
+$sizes: "sm" 10, "md" 15, "lg" 30;
+@each $name, $size in $sizes {
+	.p-t-#{$name} {
+		padding-top: rem-calc($size);
+	}
+	.p-b-#{$name} {
+		padding-bottom: rem-calc($size);
+	}
+
+	.m-t-#{$name} {
+		margin-top: rem-calc($size);
+	}
+	.m-b-#{$name} {
+		margin-bottom: rem-calc($size);
+	}
+}

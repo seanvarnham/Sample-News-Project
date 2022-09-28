@@ -1,0 +1,9 @@
+@import "../../styles/scss/helpers";
+
+.footer {
+	min-height: rem-calc(80);
+
+	@include breakpoint(mediumUp) {
+		min-height: rem-calc(120);
+	}
+}

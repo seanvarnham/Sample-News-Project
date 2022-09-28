@@ -1,0 +1,30 @@
+@import "../../../styles/scss/helpers";
+
+.navigation {
+}
+
+.nav {
+	&__item {
+		line-height: 1;
+		font-size: rem-calc(16);
+
+		@include breakpoint(largeUp) {
+			margin: rem-calc(0 10);
+		}
+
+		a {
+			padding: rem-calc(5 10);
+		}
+
+		&:last-of-type {
+			a {
+				padding-right: 0;
+			}
+		}
+
+		[aria-current="true"] {
+			color: $dark-goldenrod;
+			font-weight: bolder;
+		}
+	}
+}
