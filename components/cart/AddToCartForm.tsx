@@ -2,9 +2,9 @@ import { FormEvent, forwardRef, Ref } from "react";
 
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
-import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 import { Product } from "../../templates/interfaces";
+import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 
 interface IAddFormProps {
 	onAddToCart: (e: FormEvent<HTMLElement>) => void;

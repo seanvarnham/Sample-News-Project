@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
-import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 //
 import CartDisplay from "./CartDisplay";

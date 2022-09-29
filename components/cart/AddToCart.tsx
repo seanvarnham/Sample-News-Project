@@ -2,11 +2,11 @@ import { MouseEvent, useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
 
 import Button from "@mui/material/Button";
-import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 import { useDispatch } from "react-redux";
 import { addToCart } from "store/cart/cart-slice";
 import { CartItem, Product } from "templates/interfaces";
 import Snackbar from "@mui/material/Snackbar";
+import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 
 interface IAddToCartProps {
 	product: Product;
